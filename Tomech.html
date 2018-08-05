@@ -1,0 +1,103 @@
+<!DOCOTYPE html>
+<html>
+<head>
+<title> Support View </title>
+<link rel="stylesheet" href="css/Tomech.css">
+
+</head>
+<body link="white" vlink="white" alink="white">
+
+<div id="main">
+	
+</div>
+     
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .fakeimg {
+      height: 200px;
+      background: #aaa;
+  }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0;height:100px;">
+  <h2 style="margin-top:-15px">Website Header</h2>
+</div>
+
+<div id="mySidenav" class="sidenav">
+	<a id="sidenavea" href="#"><h2>MESSI</h2></a>
+	<a id="ex" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	<a id="sidenavea" href="index.html">דף הבית</a>
+	<a id="sidenavea" href="Tomech.html">איזור אישי תומך</a>
+	<a id="sidenavea" href="#">הגדרות</a>
+	<a id="sidenavea" href="#">טלפונים</a>
+	<a id="sidenavea" href="#">knowledge Base</a>
+	</div>
+	
+	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
+	
+	<script>
+	function openNav() {
+		document.getElementById("mySidenav").style.width = "250px";
+	}
+	
+	function closeNav() {
+		document.getElementById("mySidenav").style.width = "0";
+	}
+	</script>
+	
+	<div class="bigdiv"><img src="images/background/Tomech.jpg" /></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+	  <h2>פתיחת תקלה:</h2>
+	  <form>
+	   <h3>פרטי מתקשר:</h3>
+	   שם מלא:<br>
+	  <input type="text" name="callerName">
+	  <br>
+	  שם חברה:<br>
+	  <input type="text" name="clientName">
+	  <br>
+	  טלפון:<br>
+	  <input type="text" name="clientName">
+	  <br>
+	  תיעוד פרטי התקלה:<br>
+	  <textarea name="message" style="width:600px; height:300px;"></textarea>
+	  <br>
+	  אופן טיפול:<br>
+	  <select name="cars">
+         <option value="kb1">בדיקת חיבורים</option>
+         <option value="kb2">נפילת רשת</option>
+         <option value="kb4">נדרש טיפול נוסף בעזרת טכנאי שטח</option>
+      </select>
+	  <br>
+	  <br>
+	  <input type="submit">
+	  </form>
+      <h2>תיאום טכנאי</h2>
+      <div class="fakeimg">Fake API</div>
+
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <p>Footer</p>
+</div>
+
+</body>
+</html>
