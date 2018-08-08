@@ -1,8 +1,8 @@
 body {
     font-family: "Lato", sans-serif;
 	direction: rtl;
+	background-image: url("../images/background/extral.jpg");
 }
-
 
 .bigdiv img {
    width:40%;
