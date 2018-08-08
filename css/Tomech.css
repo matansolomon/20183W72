@@ -91,3 +91,11 @@ body {
 	margin-right: 100px;
 	
 }
+input[type='checkbox'] {
+  float: right;
+  width: 20px;
+}
+input[type='checkbox'] + label {
+  display: block;
+  width: 30px;
+}
