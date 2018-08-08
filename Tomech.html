@@ -29,6 +29,19 @@
       background: #aaa;
   }
   </style>
+  
+  <script>
+	function script(){
+	document.getElementById("hiddenField2").value=new Date().toJSON().slice(0,19).replace(/-/g,'/');
+	document.getElementById("hiddenField2").value=document.getElementById("hiddenField2").value.replace(/:/g,'/');
+	document.getElementById("hiddenField2").value=document.getElementById("hiddenField2").value.replace(/T/g,'/');	
+	document.getElementById("hiddenField2").value=document.getElementById("hiddenField2").value.replace(/[/\\*]/g, "");	
+	document.getElementById("hiddenField1").value=document.getElementById("hiddenField2").value + Math.floor(Math.random());
+	
+	//document.getElementById("_total").value;
+	//document.getElementById("simpleCart_quantity").value;
+	}
+	</script>
 </head>
 <body>
 
@@ -65,6 +78,9 @@
     <div class="col-sm-12">
 	  <h2>פתיחת תקלה:</h2>
 	  <form>
+	   <input  name="hiddenField1" id="hiddenField1" disabled/>
+	   <input type="hidden" name="hiddenField2" id="hiddenField2"/>
+	   <script>script();</script>
 	   <h3>פרטי מתקשר:</h3>
 	   שם מלא:<br>
 	  <input type="text" name="callerName">
@@ -89,7 +105,7 @@
 	  <input type="submit">
 	  </form>
       <h2>תיאום טכנאי</h2>
-      <div class="fakeimg">Fake API</div>
+      <iframe id="calendar" src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=yoniel23%40gmail.com&amp;color=%23875509&amp;ctz=Asia%2FJerusalem" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
 
     </div>
   </div>

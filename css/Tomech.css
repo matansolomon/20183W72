@@ -85,3 +85,9 @@ body {
 	width: 100px; 
 	height: 100px;
 }
+
+#calendar {
+	border: 0;
+	margin-right: 100px;
+	
+}
