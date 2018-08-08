@@ -1,0 +1,93 @@
+body {
+    font-family: "Lato", sans-serif;
+	direction: rtl;
+}
+
+
+.bigdiv img {
+   width:40%;
+   height:50%;
+   position:absolute;
+   left:50%;
+   top:25%;
+   margin-left:-900px;
+   border-radius: 50%;
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #B0E0E6;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+	text-align:center;
+}
+
+.sidenav h2 {
+	padding: 8px 8px 8px 32px;
+	margin-top: -30px;
+	margin-right: 25px;
+    text-decoration: none;
+    font-size: 35px;
+	text-align:center;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#sidenavea {
+	margin-right: 10px;
+}
+
+#ex {
+    margin-right: -20px;
+}
+
+#cons {
+	font-size:30px;
+	cursor:pointer;
+	position: absolute; 
+	top: 20; 
+	right: 0;
+	margin-right: 50px;
+	display: block; 
+	width: 100px; 
+	height: 100px;
+}
+
+#calendar {
+	border: 0;
+	margin-right: 100px;
+	
+}
