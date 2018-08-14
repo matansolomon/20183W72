@@ -111,6 +111,25 @@ body {
 	border-radius: 25px;
 }
 
+.call{
+	background-color:white;
+	width:25%;
+	height:100px;
+	float:left;
+	display:inline-block;
+	margin:20px;
+	margin-left:50px;
+}
+
+.match{
+	background-color:white;
+	width:25%;
+	height:200px;
+	float:left;
+	display:inline-block;
+	margin:26px;
+	margin-left:50px;
+}
 
  
  
