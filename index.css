@@ -1,0 +1,123 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #00004d;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.container{
+	width:70%;
+	font-family:Impact;
+}
+
+.container h1{
+	padding-top:5px;
+	padding-left:20px;
+
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #bfbfbf;
+    display: block;
+    transition: 0.3s;
+	text-align:center;
+}
+
+.sidenav h2 {
+	padding: 8px 8px 8px 32px;
+	margin-top: -30px;
+	margin-right: 25px;
+    text-decoration: none;
+    font-size: 35px;
+	text-align:center;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#sidenavea {
+	margin-right: 10px;
+}
+
+#ex {
+    margin-right: -20px;
+}
+
+#cons {
+	font-size:30px;
+	cursor:pointer;
+	position: absolute; 
+	top: 20; 
+	right: 0;
+	margin-right: 50px;
+	display: block; 
+	width: 100px; 
+	height: 100px;
+}
+
+#logo{
+	height:100px;
+	width:400px;
+}
+
+#lastCalls{
+	height:45%;
+	width:82%;
+	background-color: #b3b3ff;
+	border-radius: 25px;
+}
+
+#callToMatch{
+	height:45%;
+	width:82%;
+	background-color: #b3b3ff;
+	border-radius: 25px;
+}
+
+#Technicians{
+	height:45%;
+	width:82%;
+	background-color: #b3b3ff;
+	border-radius: 25px;
+}
+
+
+ 
+ 
+ 
+.footer{
+	width:100%;
+	height:20%;
+	float:bottom;
+	background-color: #f2f2f2;
+}
