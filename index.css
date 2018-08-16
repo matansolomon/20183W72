@@ -119,6 +119,7 @@ body {
 	display:inline-block;
 	margin:20px;
 	margin-left:50px;
+	border-radius: 5px;
 }
 
 .match{
@@ -129,6 +130,8 @@ body {
 	display:inline-block;
 	margin:26px;
 	margin-left:50px;
+	border-radius: 8px;
+
 }
 
  
