@@ -2,7 +2,7 @@
 <html>
 <head>
 <title> Support View </title>
-<link rel="stylesheet" href="css/Tomech.css">
+<link rel="stylesheet" href="css/edit.css">
 
 </head>
 <body link="white" vlink="white" alink="white">
@@ -109,37 +109,32 @@
     <div class="col-sm-12">
 	  <h2>פתיחת תקלה:</h2>
 	  <form>
-	   <input  name="hiddenField1" id="hiddenField1" disabled/>
-	   <input type="hidden" name="hiddenField2" id="hiddenField2"/>
-	   <script>script();</script>
-	   <h3>פרטי מתקשר:</h3>
-	   שם מלא:<br>
-	  <input type="text" name="callerName">
-	  <br>
-	  שם חברה:<br>
-	  <select>
-	  </select>
-	  <br>
-סניף:<br>
-	  <select>
-	  </select>
-	  <br>
-	  טלפון:<br>
-	  <input type="text" name="clientName">
-	  <br>
-	  תיעוד פרטי התקלה:<br>
-	  <textarea name="message" style="width:600px; height:300px;"></textarea>
-	  <br>
-	  <div class="radio">
-		<h3>אופן טיפול:</h3>
-		 <textarea name="message" style="width:600px; height:300px;"></textarea><br>
-<h2>		 קוד סיום תקלה<br></h2>
-		<select>
-		<label><option value="0"></option></label>
-		<label><option value="1">ביצוע אתחול למכשיר</option></label>
-		<label><option value="2">לא בוצע כלום</option></label>
-		<label><option value="3">כבל רשת לא תקין</option></label>
-		<label><option value="4">שלט לא תקין</option></label>
+	  <h4>בחר טווח תאריכים להצגת קריאות פתוחות</h4>
+	    <input type="radio" name="time" value="Today"> היום  
+		<input type="radio" name="time" value="7days"> 7 ימים אחרונים  
+		<input type="radio" name="time" value="30days"> 30 ימים אחרונים<br>
+		<input type="radio" name="time" value="date"> טווח תאריכים:
+		מתאריך:  <input type="date" name="datesfrom"> עד תאריך: <input type="date" name="datesto"><br><br>
+	   
+	<table>
+		<tr>
+			<th>מספר קריאה</th>
+			<th>שם החברה</th>
+			<th>שם הסניף</th>
+			<th>תאריך פתיחה</th>
+			<th>סטטוס הקריאה</th>
+		</tr>
+		<tr>
+			<th>12345</th>
+			<th>בלה בלה בע"מ</th>
+			<th>קניון ארנה 24</th>
+			<th>11.08.18</th>
+			<th>ממתינה לתשובה</th>
+		</tr>
+	</table>
+  
+	   
+	   
 </select>
 	  </div>
 	  <br>
