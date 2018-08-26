@@ -1,0 +1,184 @@
+body {
+    font-family: "Lato", sans-serif;
+	direction: rtl;
+	background-color: #F2F4EF;
+}
+
+.sidenav {
+    height: 10%;
+    width: 25%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #8F8681;
+    overflow-x: hidden;
+    transition: 0.5s;
+	margin-top:10px;
+	border-radius: 25px;
+
+}   
+    
+.container{
+	width:70%;
+	font-family:Impact;
+}
+
+.container h1{
+	padding-top:5px;
+	padding-left:20px;
+
+}
+
+.sidenav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #bfbfbf;
+    display: block;
+    transition: 0.3s;
+	text-align:center;
+}
+
+.sidenav h2 {
+    text-decoration: none;
+    font-size: 35px;
+	text-align:center;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#conConfirm {
+	margin-right: 10px;
+	display: inline; 
+	font-size: 20px;
+}
+#sidenavea1 {
+	margin-right: 10px;
+}
+#sidenavea2 {
+	margin-right: 10px;
+}
+#sidenavea3 {
+	margin-right: 10px;
+}
+#sidenavea4 {
+	margin-right: 10px;
+}
+#sidenavea5 {
+	margin-right: 10px;
+}
+#sidenavea6 {
+	margin-right: 10px;
+}
+
+#tomechopen {
+	margin-right: 10px;
+}
+
+#techopen1 {
+	margin-right: 10px;
+}
+#techopen2 {
+	margin-right: 10px;
+}
+
+#manageropen {
+	margin-right: 10px;
+}
+
+#ex {
+    margin-right: -20px;
+}
+
+#bo1{
+	margin-left: 10%;
+}
+
+#cons {
+	font-size:30px;
+	cursor:pointer;
+	position: absolute; 
+	top: 20; 
+	right: 0;
+	margin-right: 50px;
+	display: block; 
+	width: 100px; 
+	height: 100px;
+}
+
+#logo{
+	height:100px;
+	width:400px;
+}
+
+#lastCalls{
+	height:45%;
+	width:82%;
+	background-color: #C2E3F4;
+	border-radius: 25px;
+}
+
+#callToMatch{
+	height:45%;
+	width:82%;
+	background-color: #C2E3F4;
+	border-radius: 25px;
+}
+
+#Technicians{
+	height:45%;
+	width:82%;
+	background-color: #C2E3F4;
+	border-radius: 25px;
+}
+
+.call{
+	background-color:#C2E3F4;
+	width:25%;
+	height:100px;
+	float:left;
+	display:inline-block;
+	margin:20px;
+	margin-left:50px;
+	border-radius: 5px;
+}
+
+.match{
+	background-color:#E1DCD9;
+	width:25%;
+	height:200px;
+	float:left;
+	display:inline-block;
+	margin:26px;
+	margin-left:50px;
+	border-radius: 8px;
+
+}
+
+ 
+ 
+ 
+.footer{
+	width:100%;
+	height:20%;
+	float:bottom;
+	background-color: #32435F;
+}
