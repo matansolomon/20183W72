@@ -39,6 +39,7 @@
 	document.getElementById("hiddenField2").value=document.getElementById("hiddenField2").value.replace(/T/g,'/');	
 	document.getElementById("hiddenField2").value=document.getElementById("hiddenField2").value.replace(/[/\\*]/g, "");	
 	document.getElementById("hiddenField1").value=document.getElementById("hiddenField2").value + Math.floor(Math.random());
+	document.getElementById("hiddenField2").value=document.getElementById("hiddenField1").value;
 	
 	//document.getElementById("_total").value;
 	//document.getElementById("simpleCart_quantity").value;
@@ -128,38 +129,68 @@
 	</div>
 
 	<div id="mySidenav" class="sidenav">
+	<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;">
+		<input type='hidden' name='authority' id='authority' value='1'>
+	</form>
 	<a id="sidenavea" href="#"><h2>MESSI</h2></a>
-	<a id="sidenavea" href="index.html">דף הבית</a>
-	<a id="sidenavea" href="Tomech.html">איזור אישי תומך</a>
+	<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
+	<a id="sidenavea" href="Tomech.php">פתיחת תקלה</a>
 	<a id="sidenavea" href="#">הגדרות</a>
 	<a id="sidenavea" href="#">טלפונים</a>
 	<a id="sidenavea" href="#">knowledge Base</a>
+	<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
-	
 
-
-	<div class="container">
+	<div id="issueForm" class="container">
 		<div class="row">
 			<div class="col-sm-12">
 				<h2>פתיחת תקלה:</h2>
-				<form>
-					<input  name="hiddenField1" id="hiddenField1" disabled/>
+				<form action="postIssue.php" method="post" id="form1">
+					<input name="hiddenField1" id="hiddenField1" disabled/>
 					<input type="hidden" name="hiddenField2" id="hiddenField2"/>
 					<script>script();</script>
 					<h3>פרטי מתקשר:</h3>
 					שם מלא:<br>
-					<input type="text" name="callerName">
+					<input id="callerFullName" type="text" name="callerFullName">
 					<br>
 					שם חברה:<br>
-					<input type="text" name="clientName">
+					<input id="companyNameList" list="companies" name="companyNameList">
+					<datalist id="companies">
+						<?php 
+							DEFINE ('DB_USER', 'matanso');
+							DEFINE ('DB_PASSWORD', 'pVUZVkA(l$Gf');
+							DEFINE ('DB_HOST', 'Localhost');
+							DEFINE ('DB_NAME', 'matanso_Sadna');
+							
+							$conn = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+							OR die('Could not connect to MySQL: ' .
+							mysqli_connect_error());
+						
+							session_start();
+							
+							$query = "SELECT Name FROM `companies` group by Name";
+		
+							$result = mysqli_query($conn, $query);
+								
+							while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+								echo "<option>" . $row{'Name'} . "</option>";
+							}
+						
+							mysqli_close($conn);
+						
+						?>
+					</datalist>
+					<br>
+					סניף:<br>
+					<input id="companyBranchList" type="text" name="companyBranchList" disabled>
 					<br>
 					טלפון:<br>
-					<input type="text" name="clientName">
+					<input id="telNumber" type="text" name="telNumber">
 					<br>
 					תיעוד פרטי התקלה:<br>
-					<textarea name="message" style="width:600px; height:300px;"></textarea>
+					<textarea id="issueText" name="issueText" style="width:600px; height:300px;"></textarea>
 					<br>
 					<div class="radio">
 						<h3>אופן טיפול:</h3>
@@ -171,8 +202,17 @@
 					</div>
 					<h3 id="tech01" style="visibility: hidden; width: 0; height: 0;" ></h3>
 					
-					<input type="submit">
+					<button id="submitForm" type="submit" form="form1" disabled>לפתיחת תקלה</button>
 				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div id="finish" class="container" style="visibility: hidden; width: 0; height: 0;margin-left:150px;">
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>!התקלה נפתחה במערכת</h2><br>
+				<a type="button" href="Tomech.php">לפתיחת תקלה חדשה לחץ כאן</a>
 			</div>
 		</div>
 	</div>
@@ -221,7 +261,7 @@
         var now = new Date();
         today = now.toISOString();
 		
-		var hiddenField2 = '11112223333344444'
+		var hiddenField2 = document.getElementById("hiddenField1").value
 		var eventId = '';
 		var fromInput;
 		var toInput;
@@ -231,7 +271,7 @@
 
         // Google api console clientID and apiKey 
         var clientId = '941242941637-7p2flj4ek9dkr5hsne83qq5kcijpq8k0.apps.googleusercontent.com';
-        var apiKey = 'AIzaSyCM7EeIj3Cs2nVPrATQ2n_ssuKCOpbaI84';
+        var apiKey = 'AIzaSyASUNzENtSrAdhwNZeBVi6i1JJraH37mzQ';
 
         // enter the scope of current project (this API must be turned on in the Google console)
         var scopes = 'https://www.googleapis.com/auth/calendar';
@@ -245,7 +285,15 @@
         function checkAuth() {
             gapi.auth.authorize({ client_id: clientId, scope: scopes, immediate: true }, handleAuthResult);
         }
-
+		
+		function disconnect() {
+			document.sampleForm.authority.value = 0;
+			document.forms["sampleForm"].submit();
+		}
+		function gotoIndex() {
+			document.forms["sampleForm"].submit();
+		}
+			
         // show/hide the 'authorize' button, depending on application state
         function handleAuthResult(authResult) {
             var authorizeButton = document.getElementById('authorize-button');
@@ -303,48 +351,52 @@
 				"attendees":[
 				],
 			};
-            gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
-                var request = gapi.client.calendar.events.insert
-                ({
-                    'calendarId': 'yoniel23@gmail.com', // calendar ID
-                    'resource': resource							// pass event details with api call
-                });
-                
-                // handle the response from our api call
-                request.execute(function (resp) {
-                    if (resp.status == 'confirmed') {
-                        eventResponse.innerHTML = "Event created successfully. View it <a href='" + resp.htmlLink + "'>online here</a>.";
-                        eventResponse.className += ' panel-success';
-						console.log('Event updated successfully' );
-                        refreshICalendarframe();
-                    } else {
-                        document.getElementById('event-response').innerHTML = "There was a problem. Reload page and try again.";
-						console.log('Event failed' );
-                        eventResponse.className += ' panel-danger';
-                    }
-                });
-            });
-			
-			fromInput = fromInput.toISOString();
-			toInput = toInput.toISOString();
 			setTimeout(function(){
-				gapi.client.load('calendar', 'v3', function() {
-					var request = gapi.client.calendar.events.list({
-					'calendarId': 'yoniel23@gmail.com',
-						"singleEvents": true,
-						'timeMin': fromInput, //2018-08-19T00:00:00-01:00
-						'timeMax': toInput //2018-08-19T00:00:00-01:00
+				setTimeout(function(){
+					gapi.client.load('calendar', 'v3', function () {					// load the calendar api (version 3)
+						var request = gapi.client.calendar.events.insert
+						({
+							'calendarId': 'yoniel23@gmail.com', // calendar ID
+							'resource': resource							// pass event details with api call
+						});
+						
+						// handle the response from our api call
+						request.execute(function (resp) {
+							if (resp.status == 'confirmed') {
+								eventResponse.innerHTML = "Event created successfully. View it <a href='" + resp.htmlLink + "'>online here</a>.";
+								eventResponse.className += ' panel-success';
+								console.log('Event updated successfully' );
+								refreshICalendarframe();
+							} else {
+								document.getElementById('event-response').innerHTML = "There was a problem. Reload page and try again.";
+								console.log('Event failed' );
+								eventResponse.className += ' panel-danger';
+							}
+						});
 					});
-					request.execute(function(resp) {
-						for (var i = 0; i < resp.items.length; i++) {
-								var event = resp.items[i]; 
-								console.log(event);
-								console.log(event['id']);
-						};
-						eventId = event['id'];
+				}, 200);
+				
+				setTimeout(function(){
+					fromInput = fromInput.toISOString();
+					toInput = toInput.toISOString();
+					gapi.client.load('calendar', 'v3', function() {
+						var request = gapi.client.calendar.events.list({
+						'calendarId': 'yoniel23@gmail.com',
+							"singleEvents": true,
+							'timeMin': fromInput, //2018-08-19T00:00:00-01:00
+							'timeMax': toInput //2018-08-19T00:00:00-01:00
+						});
+						request.execute(function(resp) {
+							for (var i = 0; i < resp.items.length; i++) {
+									var event = resp.items[i]; 
+									console.log(event);
+									console.log(event['id']);
+							};
+							eventId = event['id'];
+						});
 					});
-				});
-			}, 2000);
+				}, 3000);
+			}, 100);
         }
 
 		// FUNCTION TO DELETE EVENT
@@ -422,7 +474,50 @@
             });
 		}
  
-
+		function submitQuery() {
+			var queryId=document.getElementById("hiddenField1").value;
+			var callerName=document.getElementById("callerFullName").value;
+			var companyName=document.getElementById("companyNameList").value;
+			var companyBranch=document.getElementById("companyBranchList").value;
+			var callerNumber=document.getElementById("telNumber").value;
+			var issueText=document.getElementById("issueText").value;
+			
+			if((callerName != "") && (companyName != "") && (callerNumber != "") && (companyBranch != "") && (issueText != ""))
+			{
+				document.getElementById("submitForm").disabled = false;
+			}
+		}
+		
+		$('#hiddenField1').on('input',function(e){
+			submitQuery();
+		});
+		$('#callerFullName').on('input',function(e){
+			submitQuery();
+		});
+		$('#companyNameList').on('change',function(e){
+			// in the handler, 'this' refers to the box clicked on
+			var companyNameList = document.getElementById('companyNameList').value;
+			
+			if (companyNameList != null) {
+				document.getElementById("companyBranchList").disabled = false;
+			}
+			else
+			{
+				document.getElementById("companyBranchList").value = '';
+				document.getElementById("companyBranchList").disabled = true;
+			}
+			submitQuery();
+		});
+		$('#companyBranchList').on('input',function(e){
+			submitQuery();
+		});
+		$('#telNumber').on('input',function(e){
+			submitQuery();
+		});
+		$('#issueText').on('input',function(e){
+			submitQuery();
+		});
+				
 		</script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script>
 </body>
