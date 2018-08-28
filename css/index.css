@@ -1,0 +1,175 @@
+body {
+    font-family: "Lato", sans-serif;
+	direction: rtl;
+	background-image: url("../images/background/extral.jpg");
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #000066;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+    
+.container{
+	width:70%;
+	font-family:Impact;
+}
+
+.container h1{
+	padding-top:5px;
+	padding-left:20px;
+
+}
+
+.sidenav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #bfbfbf;
+    display: block;
+    transition: 0.3s;
+	text-align:center;
+}
+
+.sidenav h2 {
+    text-decoration: none;
+    font-size: 35px;
+	text-align:center;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#conConfirm {
+	margin-right: 10px;
+	display: inline; 
+	font-size: 20px;
+}
+#sidenavea1 {
+	margin-right: 10px;
+}
+#sidenavea2 {
+	margin-right: 10px;
+}
+#sidenavea3 {
+	margin-right: 10px;
+}
+#sidenavea4 {
+	margin-right: 10px;
+}
+#sidenavea5 {
+	margin-right: 10px;
+}
+#sidenavea6 {
+	margin-right: 10px;
+}
+
+#tomechopen {
+	margin-right: 10px;
+}
+
+#techopen1 {
+	margin-right: 10px;
+}
+#techopen2 {
+	margin-right: 10px;
+}
+
+#manageropen {
+	margin-right: 10px;
+}
+
+#ex {
+    margin-right: -20px;
+}
+
+#bo1{
+	margin-left: 10%;
+}
+
+#cons {
+	font-size:30px;
+	cursor:pointer;
+	position: absolute; 
+	top: 20; 
+	right: 0;
+	margin-right: 50px;
+	display: block; 
+	width: 100px; 
+	height: 100px;
+}
+
+#cons1 {
+	font-size:30px;
+	cursor:pointer;
+	position: absolute; 
+	top: 20; 
+	right: 0;
+	margin-right: 50px;
+	display: block; 
+	width: 100px; 
+	height: 100px;
+}
+
+#logo{
+	height:100px;
+	width:400px;
+}
+
+#lastCalls{
+	height:45%;
+	width:82%;
+	background-color: #C2E3F4;
+	border-radius: 25px;
+}
+
+#callToMatch{
+	height:45%;
+	width:82%;
+	background-color: #C2E3F4;
+	border-radius: 25px;
+}
+
+#Technicians{
+	height:45%;
+	width:82%;
+	background-color: #C2E3F4;
+	border-radius: 25px;
+}
+
+#cont{
+	background-color:white;
+	margin:20px;
+	margin-right:300px;
+}
+ 
+ 
+.footer{
+	width:100%;
+	height:20%;
+	float:bottom;
+	background-color: #32435F;
+}
