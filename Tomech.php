@@ -44,18 +44,23 @@
 	//document.getElementById("_total").value;
 	//document.getElementById("simpleCart_quantity").value;
 	}
+	
 	function openNav() {
-		document.getElementById("ifmCalendar").style.width = "100%";
-		document.getElementById("ifmCalendar").style.height = "100%";
+		document.getElementById("mySidenav").style.visibility = "visible";	
+		document.getElementById("mySidenav").style.width = "300px";
+		document.getElementById("mySidenav").style.height = "100%";
 	}
 	
 	function closeTechNav() {
 		document.getElementById("myTechSidenav").style.width = "0";
-		document.getElementById("myTechSidenav").style.height = "0";
-		document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("mySidenav").style.width = "300px";
 		document.getElementById("mySidenav").style.height = "100%";
-		document.getElementById("myTechSidenav").style.visibility = "hidden";
-		
+		document.getElementById("myTechSidenav").style.visibility = "hidden";	
+	}
+	
+	function closeconNav() {
+		document.getElementById("mySidenav").style.width = "0";
+		document.getElementById("mySidenav").style.visibility = "hidden";	
 	}
 	
 	function openCalendar() {
@@ -129,16 +134,17 @@
 	</div>
 
 	<div id="mySidenav" class="sidenav">
-	<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;">
-		<input type='hidden' name='authority' id='authority' value='1'>
-	</form>
-	<a id="sidenavea" href="#"><h2>MESSI</h2></a>
-	<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
-	<a id="sidenavea" href="Tomech.php">פתיחת תקלה</a>
-	<a id="sidenavea" href="#">הגדרות</a>
-	<a id="sidenavea" href="#">טלפונים</a>
-	<a id="sidenavea" href="#">knowledge Base</a>
-	<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
+		<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;">
+			<input type='hidden' name='authority' id='authority' value='1'>
+		</form>
+		<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeconNav()">&times;</a>
+		<a id="sidenavea" href="#"><h2>תפריט</h2></a>
+		<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
+		<a id="sidenavea" href="Tomech.php">פתיחת תקלה</a>
+		<a id="sidenavea" href="#">הגדרות</a>
+		<a id="sidenavea" href="#">טלפונים</a>
+		<a id="sidenavea" href="#">knowledge Base</a>
+		<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>

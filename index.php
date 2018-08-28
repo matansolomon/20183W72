@@ -40,7 +40,7 @@
 	<div class="col-sm-12">
 		<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeconNav()">&times;</a>
 		<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;width: 0; height: 0;">
-		<input type='hidden' name='authority' id='authority' value=''>
+			<input type='hidden' name='authority' id='authority' value=''>
 		<datalist id="usernames">
 			<?php 
 				DEFINE ('DB_USER', 'matanso');
@@ -79,17 +79,31 @@
 		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea1' href='#'><h2>תפריט</h2></a>
 		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='tomechopen' href='Tomech.php'>פתיחת תקלה</a>
-		<a style="visibility: hidden; width: 0; height: 0;" id='techopen1' href='tech.php'>איזור אישי</a>
-	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen2' href='tech.php'>מלאי רכב</a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='techopen1' href='Tech.php'>איזור אישי</a>
+	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen2' href='Tech.php'>מלאי רכב</a>
 		<a style="visibility: hidden; width: 0; height: 0;" id='manageropen' href='Tomech.php'>מלאי מחסנים</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea3' href='#'>תקלות נפוצות</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea4' href='#'>טלפונים</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea5' href='#'>הגדרות</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea6' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
+		
+	</div>
+		<!--<a id="sidenavea" href="#"><h2>תפריט</h2></a>
+		<a id="ex" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a id="sidenavea" href="index.html">דף הבית</a>
+		<a id="sidenavea" href="Tomech.php">איזור אישי</a>
+		<a id="sidenavea" href="#">תקלות נפוצות</a>
+		<a id="sidenavea" href="#">טלפונים</a>
+		<a id="sidenavea" href="#">הגדרות</a>-->
+		</div>
+		
+		<span id="cons1" onclick="openNav()" style="visibility: hidden;">תפריט&#9776;</span>
+		<span id="cons" onclick="connect()">התחבר&#9777;</span>
 		<script type="text/javascript">
 			document.sampleForm.authority.value = '<?php echo $_POST['authority']?>';
 			if(document.sampleForm.authority.value == 1)
 			{
+				document.getElementById("mySidenav").style.visibility = "visible";	
 				document.getElementById("fo1").style.width = "0";
 				document.getElementById("fo1").style.height = "0";
 				document.getElementById("fo1").style.visibility = 'hidden';
@@ -114,12 +128,14 @@
 				document.getElementById("tomechopen").style.width = "";
 				document.getElementById("tomechopen").style.height = "";
 				document.getElementById("tomechopen").style.visibility = 'visible';
-				document.getElementById("mySidenav").style.width = "250px";
+				document.getElementById("mySidenav").style.width = "300px";
 				document.getElementById("mySidenav").style.height = "100%";
-				document.getElementById("ex").style.visibility = 'hidden';
+				document.getElementById("cons1").style.visibility = 'visible';
+				document.getElementById("cons").style.visibility = 'hidden';
 			}
 			if(document.sampleForm.authority.value == 2)
 			{
+				document.getElementById("mySidenav").style.visibility = "visible";	
 				document.getElementById("fo1").style.width = "0";
 				document.getElementById("fo1").style.height = "0";
 				document.getElementById("fo1").style.visibility = 'hidden';
@@ -147,12 +163,14 @@
 				document.getElementById("techopen2").style.width = "";
 				document.getElementById("techopen2").style.height = "";
 				document.getElementById("techopen2").style.visibility = 'visible';
-			    document.getElementById("mySidenav").style.width = "250px";
+			    document.getElementById("mySidenav").style.width = "300px";
 				document.getElementById("mySidenav").style.height = "100%";
-				document.getElementById("ex").style.visibility = 'hidden';
+				document.getElementById("cons1").style.visibility = 'visible';
+				document.getElementById("cons").style.visibility = 'hidden';
 			}
 			if(document.sampleForm.authority.value == 3)
 			{
+				document.getElementById("mySidenav").style.visibility = "visible";	
 				document.getElementById("fo1").style.width = "0";
 				document.getElementById("fo1").style.height = "0";
 				document.getElementById("fo1").style.visibility = 'hidden';
@@ -177,9 +195,10 @@
 				document.getElementById("manageropen").style.width = "";
 				document.getElementById("manageropen").style.height = "";
 				document.getElementById("manageropen").style.visibility = 'visible';
-			    document.getElementById("mySidenav").style.width = "250px";
+			    document.getElementById("mySidenav").style.width = "300px";
 				document.getElementById("mySidenav").style.height = "100%";
-				document.getElementById("ex").style.visibility = 'hidden';
+				document.getElementById("cons1").style.visibility = 'visible';
+				document.getElementById("cons").style.visibility = 'hidden';
 			}
 			
 			
@@ -193,8 +212,8 @@
 	}
 	
 	function gotoIndex() {
-			document.forms["sampleForm"].submit();
-		}
+		document.forms["sampleForm"].submit();
+	}
 			
 	function conConfirm() {
 		var user = document.getElementById('user').value;
@@ -214,6 +233,7 @@
 					c_password = '1';
 					if(options[i].value == 'tomech')
 					{
+						document.getElementById("mySidenav").style.visibility = "visible";	
 						document.getElementById("fo1").style.width = "0";
 						document.getElementById("fo1").style.height = "0";
 						document.getElementById("fo1").style.visibility = 'hidden';
@@ -238,13 +258,15 @@
 						document.getElementById("tomechopen").style.width = "";
 						document.getElementById("tomechopen").style.height = "";
 						document.getElementById("tomechopen").style.visibility = 'visible';
-						document.getElementById("mySidenav").style.width = "250px";
+						document.getElementById("mySidenav").style.width = "300px";
 						document.getElementById("mySidenav").style.height = "100%";
-						document.getElementById("ex").style.visibility = 'hidden';
 						document.sampleForm.authority.value = 1;
+						document.getElementById("cons1").style.visibility = 'visible';
+						document.getElementById("cons").style.visibility = 'hidden';
 					}
 					if(options[i].value == 'tech')
 					{
+						document.getElementById("mySidenav").style.visibility = "visible";	
 						document.getElementById("fo1").style.width = "0";
 						document.getElementById("fo1").style.height = "0";
 						document.getElementById("fo1").style.visibility = 'hidden';
@@ -272,13 +294,15 @@
 						document.getElementById("techopen2").style.width = "";
 						document.getElementById("techopen2").style.height = "";
 						document.getElementById("techopen2").style.visibility = 'visible';
-						document.getElementById("mySidenav").style.width = "250px";
+						document.getElementById("mySidenav").style.width = "300px";
 						document.getElementById("mySidenav").style.height = "100%";
-						document.getElementById("ex").style.visibility = 'hidden';
 						document.sampleForm.authority.value = 2;
+						document.getElementById("cons1").style.visibility = 'visible';
+						document.getElementById("cons").style.visibility = 'hidden';
 					}
 					if(options[i].value == 'manager')
 					{
+						document.getElementById("mySidenav").style.visibility = "visible";	
 						document.getElementById("fo1").style.width = "0";
 						document.getElementById("fo1").style.height = "0";
 						document.getElementById("fo1").style.visibility = 'hidden';
@@ -303,10 +327,11 @@
 						document.getElementById("manageropen").style.width = "";
 						document.getElementById("manageropen").style.height = "";
 						document.getElementById("manageropen").style.visibility = 'visible';
-						document.getElementById("mySidenav").style.width = "250px";
+						document.getElementById("mySidenav").style.width = "300px";
 						document.getElementById("mySidenav").style.height = "100%";
-						document.getElementById("ex").style.visibility = 'hidden';
 						document.sampleForm.authority.value = 3;
+						document.getElementById("cons1").style.visibility = 'visible';
+						document.getElementById("cons").style.visibility = 'hidden';
 					}
 				}
 			}
@@ -326,29 +351,16 @@
 		}
 	}
 	</script>
-	</div>
-	<!--<a id="sidenavea" href="#"><h2>תפריט</h2></a>
-	<a id="ex" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<a id="sidenavea" href="index.html">דף הבית</a>
-	<a id="sidenavea" href="Tomech.php">איזור אישי</a>
-	<a id="sidenavea" href="#">תקלות נפוצות</a>
-	<a id="sidenavea" href="#">טלפונים</a>
-	<a id="sidenavea" href="#">הגדרות</a>-->
-	</div>
-	
-	<!--<span id="cons" onclick="openNav()">תפריט&#9776;</span>-->
-	<span id="cons" onclick="connect()">התחבר&#9777;</span>
-	
 	<script>
 	function connect() {
 		document.getElementById("mySidenav").style.width = "300px";
-
 		document.getElementById("mySidenav").style.height = "160px";
 		document.getElementById("mySidenav").style.paddingLeft = "10px";
 	}
 	
 	function openNav() {
-		document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("mySidenav").style.width = "300px";
+		document.getElementById("mySidenav").style.height = "100%";
 	}
 	
 	function closeconNav() {

@@ -124,6 +124,18 @@ body {
 	height: 100px;
 }
 
+#cons1 {
+	font-size:30px;
+	cursor:pointer;
+	position: absolute; 
+	top: 20; 
+	right: 0;
+	margin-right: 50px;
+	display: block; 
+	width: 100px; 
+	height: 100px;
+}
+
 #logo{
 	height:100px;
 	width:400px;
