@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>MESSI</title>
+  <title>פתיחת תקלה</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -44,14 +44,14 @@
 	//document.getElementById("simpleCart_quantity").value;
 	}
 	function openNav() {
-		document.getElementById("ifmCalendar").style.width = "100%";
+		document.getElementById("ifmCalendar").style.width = "300px";
 		document.getElementById("ifmCalendar").style.height = "100%";
 	}
 	
 	function closeTechNav() {
 		document.getElementById("myTechSidenav").style.width = "0";
 		document.getElementById("myTechSidenav").style.height = "0";
-		document.getElementById("mySidenav").style.width = "250px";
+		document.getElementById("mySidenav").style.width = "300px";
 		document.getElementById("mySidenav").style.height = "100%";
 		document.getElementById("myTechSidenav").style.visibility = "hidden";
 		
@@ -65,7 +65,6 @@
 	
 	function closeNav() {
 		document.getElementById("ifmCalendar").style.width = "0";
-		document.getElementById("ifmCalendar").style.height = "0";
 	}
 	
 	$(function() {
@@ -122,16 +121,18 @@
 <body>
 
 	<div class="jumbotron text-center" style="margin-bottom:0;height:100px;">
-	<h2 style="margin-top:-15px">Website Header</h2>
+	<h2 style="margin-top:-15px">פתיחת תקלה</h2>
 	</div>
 
 	<div id="mySidenav" class="sidenav">
-	<a id="sidenavea" href="#"><h2>MESSI</h2></a>
-	<a id="sidenavea" href="index.html">דף הבית</a>
-	<a id="sidenavea" href="Tomech..php">איזור אישי תומך</a>
-	<a id="sidenavea" href="#">הגדרות</a>
-	<a id="sidenavea" href="#">טלפונים</a>
-	<a id="sidenavea" href="#">knowledge Base</a>
+	<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	<a id="sidenavea" href="#"><h2>תפריט</h2></a>
+		<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
+		<a id="sidenavea" href="Tomech.php">פתיחת תקלה</a>
+		<a id="sidenavea" href="#">הגדרות</a>
+		<a id="sidenavea" href="#">טלפונים</a>
+		<a id="sidenavea" href="#">knowledge Base</a>
+		<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
@@ -153,7 +154,7 @@
 		OR die('Could not connect to MySQL: ' .
 		mysqli_connect_error());
 		
-		$query = "insert into submits (queryId, callerName, companyName, companyBranch, callerNumber, issueText) VALUES ('".$queryId."', '".$callerName."', '".$companyName."', '".$companyBranch."', '".$callerNumber."', '".$issueText."')";
+		$query = "insert into submits (queryId, callerName, companyName, companyBranch, callerNumber, issueText, opened) VALUES ('".$queryId."', '".$callerName."', '".$companyName."', '".$companyBranch."', '".$callerNumber."', '".$issueText."', '1')";
 
 		$result = mysqli_query($conn, $query);
 	
