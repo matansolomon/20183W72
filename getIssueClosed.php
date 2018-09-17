@@ -71,6 +71,52 @@
 		document.getElementById("mySidenav").style.width = "0";
 		document.getElementById("mySidenav").style.height = "0";
 	}
+	
+	$(function() {
+		$("input:checkbox").on('click', function() {
+		// in the handler, 'this' refers to the box clicked on
+		var $box = $(this);
+		var eventButton = document.getElementById('btnCreateEvents');
+		var deleteEventButton = document.getElementById('btnDeleteEvents');
+		var openCalendar = document.getElementById('btnOpenCalendar');
+		
+		if ($box.is(":checked")) {
+			// the name of the box is retrieved using the .attr() method
+			// as it is assumed and expected to be immutable
+			var group = "input:checkbox[name='" + $box.attr("name") + "']";
+			// the checked state of the group/box on the other hand will change
+			// and the current value is retrieved using .prop() method
+			$(group).prop("checked", false);
+			$box.prop("checked", true);
+			if ($box.prop("value") == "3") {
+				openCalendar.style.visibility = 'visible'; 		// if checked, hide button
+				openCalendar.style.width = '';
+				openCalendar.style.height = '';
+				document.getElementById("tech01").innerHTML = "תיאום טכנאי:";
+			} else {
+				document.getElementById("myTechSidenav").style.visibility = "hidden";
+				openCalendar.style.visibility = 'hidden'; 		// if checked, hide button
+				openCalendar.style.width = '0';
+				openCalendar.style.height = '0';
+				document.getElementById("tech01").innerHTML = "";
+			}
+		} else {
+			$box.prop("checked", false);
+			if ($box.prop("value") == "3") {
+				openCalendar.style.visibility = 'hidden'; 		// if checked, hide button
+				openCalendar.style.width = '0';
+				openCalendar.style.height = '0';
+				document.getElementById("myTechSidenav").style.visibility = "hidden";
+				document.getElementById("myTechSidenav").style.width = "0";
+				document.getElementById("myTechSidenav").style.height = "0";
+				document.getElementById("mySidenav").style.width = "250px";
+				document.getElementById("mySidenav").style.height = "100%";
+				document.getElementById("tech01").innerHTML = "";
+				
+			}
+		}
+		});
+	});
 	</script>
 	
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
@@ -111,10 +157,6 @@
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
 		
-	<form id='queryForm' name='queryForm' method='post' action='CloseIssue.php' style="visibility:hidden;">
-		<?php echo "<input type='hidden' name='queryId' id='queryId' value='". $_POST['queryId'] ."'>"?>
-		<input type='hidden' name='IssueText2' id='IssueText2' value='1'>
-	</form>
 	
 	<div class="container">
 	<div class="row">
@@ -155,10 +197,10 @@
 			echo "</tr>";
 			echo "</table>";
 			echo "<br>";
-			echo "<h3>תיאור התקלה על ידי תומך</h3><br>";
+			echo "<h3>תיאור התקלה</h3><br>";
 			echo "<textarea id='issueText' name='issueText' style='width:600px; height:300px; margin-right:50px;' disabled>". $row{'issueText'} ."</textarea><br>";
-			echo "<h3>תיאור התקלה על ידי טכנאי</h3><br>";
-			echo "<textarea id='issueText2' name='issueText' style='width:600px; height:300px; margin-right:50px;'>". $row{'issueText2'} ."</textarea><br>";
+			echo "<h3>תיאור התקלה</h3><br>";
+			echo "<textarea id='issueText2' name='issueText' style='width:600px; height:300px; margin-right:50px;' disabled>". $row{'issueText2'} ."</textarea><br>";
 			
 			$query1 = "select * from companies where Name = '". $row{'companyName'} ."'";
 			$result1 = mysqli_query($conn, $query1);
@@ -218,7 +260,7 @@
 			</script>";
 			
 			echo "<br>";
-			echo "<label style='margin-left:50%; float: left;'><input id='thQueryId' type='checkbox' class='radio' name='mobil[1][]' class='radi' style='display: none;'/><font size='5' color='blue' style='cursor: pointer;text-align: center; vertical-align: middle; border: 1px solid black; border-radius: 5px; padding: 3px;'>סגירת תקלה</font></label><br>";
+			echo "<br>";
 			echo "<h3>כתובת הלקוח: ". $row1{'address'} ."</h3>";
 			
 			mysqli_close($conn);
@@ -231,25 +273,6 @@
 
 					
 	<script type="text/javascript">
-	$(function() {
-		$("input:checkbox").on('click', function() {
-			// in the handler, 'this' refers to the box clicked on
-			var $box = $(this);
-			
-			if ($box.is(":checked")) {
-				// the name of the box is retrieved using the .attr() method
-				// as it is assumed and expected to be immutable
-				var group = "input:checkbox[name='" + $box.attr("name") + "']";
-				// the checked state of the group/box on the other hand will change
-				// and the current value is retrieved using .prop() method
-				$(group).prop("checked", false);
-				$box.prop("checked", true);
-				document.queryForm.IssueText2.value = document.getElementById("issueText2").value;
-				document.forms["queryForm"].submit();
-			}
-		});
-	});
-	
 	function disconnect() {
 		document.sampleForm.authority.value = 0;
 		document.forms["sampleForm"].submit();

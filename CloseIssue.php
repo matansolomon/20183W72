@@ -121,33 +121,32 @@
 <body>
 
 	<div class="jumbotron text-center" style="margin-bottom:0;height:100px;">
-	<h2 style="margin-top:-15px">פתיחת תקלה</h2>
+	<h2 style="margin-top:-15px">סגירת תקלה</h2>
 	</div>
 
 	<div id="mySidenav" class="sidenav">
-	<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<a id="sidenavea" href="#"><h2>תפריט</h2></a>
+		<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a id="sidenavea" href="#"><h2>תפריט</h2></a>
 		<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
-		<a id="sidenavea" href="Tomech.php">פתיחת תקלה</a>
+		<a id="sidenavea" href="Tech.php">תקלות פתוחות</a>
+		<a id="sidenavea" href="TechClosed.php">תקלות סגורות</a>
+		<a id="sidenavea" href="TechClosed.php">מלאי רכב</a>
 		<a id="sidenavea" href="#">הגדרות</a>
 		<a id="sidenavea" href="#">טלפונים</a>
 		<a id="sidenavea" href="#">knowledge Base</a>
 		<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
-	
 	<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;">
-		<input type='hidden' name='authority' id='authority' value='1'>
+		<input type='hidden' name='authority' id='authority' value='2'>
 	</form>
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
 		
 	<?php 
-		$queryId = $_POST['hiddenField2'];
-		$callerName = $_POST['callerFullName'];
-		$companyName = $_POST['companyNameList'];
-		$companyBranch = $_POST['companyBranchList'];
-		$callerNumber = $_POST['telNumber'];
-		$issueText = $_POST['issueText'];
+		echo "<p>".$_POST['queryId']."</p>";
+		echo "<p>".$_POST['IssueText2']."</p>";
+		$queryId = $_POST['queryId'];
+		$IssueText2 = $_POST['IssueText2'];
 		
 		DEFINE ('DB_USER', 'matanso');
 		DEFINE ('DB_PASSWORD', 'pVUZVkA(l$Gf');
@@ -158,7 +157,7 @@
 		OR die('Could not connect to MySQL: ' .
 		mysqli_connect_error());
 		
-		$query = "insert into submits (queryId, callerName, companyName, companyBranch, callerNumber, issueText, opened) VALUES ('".$queryId."', '".$callerName."', '".$companyName."', '".$companyBranch."', '".$callerNumber."', '".$issueText."', '1')";
+		$query = "UPDATE submits SET opened = '0', issueText2 = '".$IssueText2."' where queryId = '".$queryId."'";
 
 		$result = mysqli_query($conn, $query);
 	
@@ -169,8 +168,9 @@
 	<div id="finish" class="container" style="margin-left:150px;">
 		<div class="row">
 			<div class="col-sm-12">
-				<h2>!התקלה נפתחה במערכת</h2><br>
-				<a type="button" href="Tomech.php">לפתיחת תקלה חדשה לחץ כאן</a>
+				<h2>!התקלה נסגרה</h2><br>
+				<a type="button" href="Tech.php">לחץ כאן כדי לעבור לתקלות הפתוחות</a><br>
+				<a type="button" href="TechClosed.php">או כאן כדי לעבור לתקלות הסגורות</a>
 			</div>
 		</div>
 	</div>
