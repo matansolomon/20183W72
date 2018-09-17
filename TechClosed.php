@@ -110,7 +110,7 @@
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
 	
-	<form id='queryForm' name='queryForm' method='post' action='getIssue.php' style="visibility:hidden;">
+	<form id='queryForm' name='queryForm' method='post' action='getIssueClosed.php' style="visibility:hidden;">
 		<input type='hidden' name='queryId' id='queryId' value='1'>
 	</form>
 
@@ -143,7 +143,7 @@
 				OR die('Could not connect to MySQL: ' .
 				mysqli_connect_error());
 				
-				$query = "select * from submits where opened = '1'";
+				$query = "select * from submits where opened = '0'";
 		
 				$result = mysqli_query($conn, $query);
 				

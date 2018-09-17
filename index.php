@@ -2,7 +2,7 @@
 <html>
 <head>
 <title> Support View </title>
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="index.css">
 
 </head>
 <body link="white" vlink="white" alink="white">
@@ -33,38 +33,7 @@
 <body>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
-	<img id="logo" src="images/Tecom_Logo.png" alt="logo">
-</div>
-
-<div id="mySidenav" class="sidenav">
-	<a id="sidenavea" href="#"><h2>תפריט</h2></a>
-	<a id="sidenavea" href="index.html">דף הבית</a>
-	<a id="sidenavea" href="Tomech.html">איזור אישי תומך</a>
-	<a id="sidenavea" href="#">הגדרות</a>
-	<a id="sidenavea" href="#">טלפונים</a>
-	<a id="sidenavea" href="#">knowledge Base</a>
-	</div>
-	
-	
-<div class="cont">
-	<h3> טלקום היא חברה אשר מספקת שירותי מוזיקה לרשתות קמעוניות ברחבי הארץ. <br>
-	הכנת פלייליסטים המתאימים לאופי החברה שלכם, תשלום תמלוגים לאקו"ם <br>
-	 והתעסקות עם בירוקרטיות נוספות בנושא המוסיקה בארץ - תשאירו את זה לנו!  <br>
-טיפול בתקלות טכניות מרחוק ובהגעה לסניף של טכנאי מקצועי ומיומן. <br> </h3>
-<h4> בין לקוחותינו : </h4>
-<img src="images/costumers/hamashbir.png" alt="hamashbir" width="300" height="150">
-<img src="images/costumers/mango.jpg" alt="mango" width="200" height="150">
-<img src="images/costumers/billabong.png" alt="billabong" width="200" height="100">
-<img src="images/costumers/hstern.png" alt="hstern" width="200" height="80">
-<img src="images/costumers/laline.png" alt="laline" width="150" height="150">
-<img src="images/costumers/mega.png" alt="mega" width="300" height="120">
-<img src="images/costumers/sabon.png" alt="sabon" width="250" height="150">
-<img src="images/costumers/ACE.jpg" alt="ACE" width="200" height="120">
-</div>
-
-<div class="cont">
-<h3> טלקום חברה מובילה בתחומה ומחזיקה במוצרים המתקדמים ביותר בשוק. <br>
-כגון סטרימר זיבי ורמקולים בעלי איכות HQ . <h3>
+	<img id="logo" src=logo.png alt="logo">
 </div>
 
 <div id="mySidenav" class="sidenav" style="width: 0;direction: ltr;">
@@ -110,8 +79,9 @@
 		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea1' href='#'><h2>תפריט</h2></a>
 		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='tomechopen' href='Tomech.php'>פתיחת תקלה</a>
-		<a style="visibility: hidden; width: 0; height: 0;" id='techopen1' href='Tech.php'>איזור אישי</a>
-	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen2' href='Tech.php'>מלאי רכב</a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='techopen1' href='Tech.php'>תקלות פתוחות</a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='techopen2' href='TechClosed.php'>תקלות סגורות</a>
+	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen3' href='Tech.php'>מלאי רכב</a>
 		<a style="visibility: hidden; width: 0; height: 0;" id='manageropen' href='Tomech.php'>מלאי מחסנים</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea3' href='#'>תקלות נפוצות</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea4' href='#'>טלפונים</a>
@@ -194,6 +164,9 @@
 				document.getElementById("techopen2").style.width = "";
 				document.getElementById("techopen2").style.height = "";
 				document.getElementById("techopen2").style.visibility = 'visible';
+				document.getElementById("techopen3").style.width = "";
+				document.getElementById("techopen3").style.height = "";
+				document.getElementById("techopen3").style.visibility = 'visible';
 			    document.getElementById("mySidenav").style.width = "300px";
 				document.getElementById("mySidenav").style.height = "100%";
 				document.getElementById("cons1").style.visibility = 'visible';
@@ -325,6 +298,9 @@
 						document.getElementById("techopen2").style.width = "";
 						document.getElementById("techopen2").style.height = "";
 						document.getElementById("techopen2").style.visibility = 'visible';
+						document.getElementById("techopen3").style.width = "";
+						document.getElementById("techopen3").style.height = "";
+						document.getElementById("techopen3").style.visibility = 'visible';
 						document.getElementById("mySidenav").style.width = "300px";
 						document.getElementById("mySidenav").style.height = "100%";
 						document.sampleForm.authority.value = 2;
@@ -400,21 +376,99 @@
 	}
 	</script>
 
-
-
-
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <nav>
-  <a href="#" >     יצירת קשר</a> |
-  <a href="#" >תמיכה טכנית</a>  |
-  <a href="#" >שירותים נוספים</a>  |
-  <a href="#" >איזור אישי</a>  |
-  <a href="#" >רשימות השמעה</a>  
-
-
-  </nav>
+<div id="bo1" class="container">
+	<h1>תקלות אחרונות</h1>
+	<div id="lastCalls">
+		<div class="call">
+			<p>#111111<br>
+				status: open <br>
+				open hour: 17:36 <br>
+				assignee: Sapir <br>
+				costumer: Otenti <br>
+			</p>
+		</div>
+		<div class="call">
+			<p>#222222<br>
+				status: closed <br>
+				open hour: 16:02 <br>
+				assignee: Yoni <br>
+				costumer: Lalin <br>
+			</p>
+		</div>
+		<div class="call">
+			<p>#333333<br>
+				status: closed <br>
+				open hour: 15:55 <br>
+				assignee: Sapir  <br>
+				costumer: Serac <br>
+			</p>
+		</div>
+		<div class="call">
+			<p>#444444<br>
+				status: closed <br>
+				open hour: 14:45 <br>
+				assignee: Matan <br>
+				costumer: Abir <br>
+			</p>
+		</div>
+		<div class="call">
+			<p>#555555<br>
+				status: open  <br>
+				open hour: 13:07 <br>
+				assignee: Matan  <br>
+				costumer: Lola <br>
+			</p>
+		</div>
+		<div class="call">
+			<p>#666666<br>
+				status: closed <br>
+				open hour: 10:12 <br>
+				assignee: Yoni  <br>
+				costumer: Titi <br>
+			</p>
+		</div>
+	</div>
+	
+	<h1>תקלות לתיאום טכנאי</h1>
+	<div id="callToMatch">
+	<div class="match">
+			<p>#111111<br>
+				status: critical <br>
+				open hour: 17:36 <br>
+				assignee: Sapir <br>
+				costumer: Otenti <br>
+			</p>
+		</div>
+		<div class="match">
+			<p>#555555<br>
+				status: minor <br>
+				open hour: 13:07 <br>
+				assignee: Yoni <br>
+				costumer: Lalin <br>
+			</p>
+		</div>
+		<div class="match">
+			<p>#<br>
+				status:  <br>
+				open hour: <br>
+				assignee:   <br>
+				costumer:  <br>
+			</p>
+		</div>
+	</div>
+	
+	<h1>מיקום טכנאים<h1>
+	<div id="Technicians">
+		<p> Here will be the location of all of the technicians <br>
+		that drives all over the country </p>
+	</div>
 </div>
 
+<!-- 
+<div class="footer" style="margin-bottom:0">
+  <p>Footer</p>
+</div>
+ -->
 
 </body>
 </html>
