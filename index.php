@@ -383,8 +383,6 @@
 
 	<br>
 	<br>
-	<br>
-	<br>
 	
 <div id="lastCallD">
 	<h1>תקלות אחרונות</h1>

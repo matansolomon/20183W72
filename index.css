@@ -148,7 +148,10 @@ body {
 
 
 #lastCalls{
-	height:100%;
+	min-height:220px;
+	overflow:auto;
+	display:block;
+	height:auto;
 	width:100%;
 	background-color: #eeeeee;
 	border-radius: 25px;
