@@ -431,8 +431,9 @@
 </div>
 
 <br>
-<div class="footer" style="margin-bottom:0">
+<div class="footer">
 </div>
+
 
 <script type="text/javascript">
 	$(function() {
