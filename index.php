@@ -32,15 +32,20 @@
 </head>
 <body>
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-	<img id="logo" src=logo.png alt="logo">
+<div class="jumbotron text-center" style="margin-bottom:0; height:10%">
 </div>
+
+<img id="logo" src="images\background\extralblur.jpg" alt="blurbackground" style="width: 100%; height: 30%">
+
+<form id='queryForm' name='queryForm' method='post' action='getIssue.php' style="visibility:hidden;">
+	<input type='hidden' name='queryId' id='queryId' value='1'>
+</form>
 
 <div id="mySidenav" class="sidenav" style="width: 0;direction: ltr;">
 	<div class="col-sm-12">
 		<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeconNav()">&times;</a>
 		<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;width: 0; height: 0;">
-			<input type='hidden' name='authority' id='authority' value=''>
+			<input type='hidden' name='authority' id='authority' value='0'>
 		<datalist id="usernames">
 			<?php 
 				DEFINE ('DB_USER', 'matanso');
@@ -376,99 +381,89 @@
 	}
 	</script>
 
-<div id="bo1" class="container">
+	<br>
+	<br>
+	<br>
+	<br>
+	
+<div id="lastCallD">
 	<h1>תקלות אחרונות</h1>
 	<div id="lastCalls">
-		<div class="call">
-			<p>#111111<br>
-				status: open <br>
-				open hour: 17:36 <br>
-				assignee: Sapir <br>
-				costumer: Otenti <br>
-			</p>
-		</div>
-		<div class="call">
-			<p>#222222<br>
-				status: closed <br>
-				open hour: 16:02 <br>
-				assignee: Yoni <br>
-				costumer: Lalin <br>
-			</p>
-		</div>
-		<div class="call">
-			<p>#333333<br>
-				status: closed <br>
-				open hour: 15:55 <br>
-				assignee: Sapir  <br>
-				costumer: Serac <br>
-			</p>
-		</div>
-		<div class="call">
-			<p>#444444<br>
-				status: closed <br>
-				open hour: 14:45 <br>
-				assignee: Matan <br>
-				costumer: Abir <br>
-			</p>
-		</div>
-		<div class="call">
-			<p>#555555<br>
-				status: open  <br>
-				open hour: 13:07 <br>
-				assignee: Matan  <br>
-				costumer: Lola <br>
-			</p>
-		</div>
-		<div class="call">
-			<p>#666666<br>
-				status: closed <br>
-				open hour: 10:12 <br>
-				assignee: Yoni  <br>
-				costumer: Titi <br>
-			</p>
-		</div>
-	</div>
-	
-	<h1>תקלות לתיאום טכנאי</h1>
-	<div id="callToMatch">
-	<div class="match">
-			<p>#111111<br>
-				status: critical <br>
-				open hour: 17:36 <br>
-				assignee: Sapir <br>
-				costumer: Otenti <br>
-			</p>
-		</div>
-		<div class="match">
-			<p>#555555<br>
-				status: minor <br>
-				open hour: 13:07 <br>
-				assignee: Yoni <br>
-				costumer: Lalin <br>
-			</p>
-		</div>
-		<div class="match">
-			<p>#<br>
-				status:  <br>
-				open hour: <br>
-				assignee:   <br>
-				costumer:  <br>
-			</p>
-		</div>
-	</div>
-	
-	<h1>מיקום טכנאים<h1>
-	<div id="Technicians">
-		<p> Here will be the location of all of the technicians <br>
-		that drives all over the country </p>
+		<?php 
+				$queryId = $_POST['hiddenField2'];
+				$callerName = $_POST['callerFullName'];
+				$companyName = $_POST['companyNameList'];
+				$companyBranch = $_POST['companyBranchList'];
+				$callerNumber = $_POST['telNumber'];
+				$issueText = $_POST['issueText'];
+				
+				DEFINE ('DB_USER', 'matanso');
+				DEFINE ('DB_PASSWORD', 'pVUZVkA(l$Gf');
+				DEFINE ('DB_HOST', 'Localhost');
+				DEFINE ('DB_NAME', 'matanso_Sadna');
+				
+				$conn = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+				OR die('Could not connect to MySQL: ' .
+				mysqli_connect_error());
+				
+				$query = "SELECT * FROM submits order by queryId desc";
+		
+				$result = mysqli_query($conn, $query);
+				
+				while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+					echo "<div class='call'>";
+					echo " <p><label><input id='thQueryId".$row{'queryId'}."' type='checkbox' class='radio' value='".$row{'queryId'}."' name='mobil[1][]' class='radi' style='display: none;'/><font size='5' color='blue' style='cursor: pointer;'>".$row{'queryId'}."</font></label><br>";
+					if($row{'opened'} == "1") {
+						echo "סטאטוס תקלה: פתוח<br>";
+						}
+					else {	
+						echo "סטאטוס תקלה: סגור<br>";
+						}
+					echo " לקוח:" . $row{'callerName'} . " <br>";
+					echo "טלפון: " . $row{'callerNumber'} . " <br>";
+					echo "שם חברה: " . $row{'companyName'} . " <br>";
+					echo "</p>";
+					echo "</div>";
+				}
+			
+				mysqli_close($conn);
+			
+			?>
 	</div>
 </div>
 
-<!-- 
+<br>
 <div class="footer" style="margin-bottom:0">
-  <p>Footer</p>
 </div>
- -->
+
+<script type="text/javascript">
+	$(function() {
+		$("input:checkbox").on('click', function() {
+			// in the handler, 'this' refers to the box clicked on
+			var $box = $(this);
+			
+			if ($box.is(":checked")) {
+				var authority = document.sampleForm.authority.value;
+				
+				if((authority == 1) || (authority == 2) || (authority == 3))
+				{
+					// the name of the box is retrieved using the .attr() method
+					// as it is assumed and expected to be immutable
+					var group = "input:checkbox[name='" + $box.attr("name") + "']";
+					// the checked state of the group/box on the other hand will change
+					// and the current value is retrieved using .prop() method
+					$(group).prop("checked", false);
+					$box.prop("checked", true);
+					document.queryForm.queryId.value = $box.prop("value");
+					document.forms["queryForm"].submit();
+				}
+				else{
+					alert("You Must Login First!");
+				}
+			}
+		});
+	});
+</script>
 
 </body>
 </html>
