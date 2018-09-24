@@ -92,7 +92,7 @@
   <h2 style="margin-top:-15px">תקלות פתוחות</h2>
 </div>
 
-<div id="mySidenav" class="sidenav">
+<div id="mySidenav" class="sidenav" style="width:0;">
 	<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;">
 		<input type='hidden' name='authority' id='authority' value='2'>
 	</form>
@@ -101,10 +101,10 @@
 	<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
 	<a id="sidenavea" href="Tech.php">תקלות פתוחות</a>
 	<a id="sidenavea" href="TechClosed.php">תקלות סגורות</a>
-	<a id="sidenavea" href="TechClosed.php">מלאי רכב</a>
-	<a id="sidenavea" href="#">הגדרות</a>
+	<a id="sidenavea" href="TechClosed.php">מלאי</a>
+	<a id="sidenavea" href="#">תקלות נפוצות</a>
 	<a id="sidenavea" href="#">טלפונים</a>
-	<a id="sidenavea" href="#">knowledge Base</a>
+	<a id="sidenavea" href="#">הגדרות</a>
 	<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	
@@ -117,7 +117,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-	<table width="100%" border="1" >
+	<table width="100%" border="1" bgcolor="#eeeeee" >
 		<tr>
 			<th style="text-align: center; vertical-align: middle;">מספר תקלה</th>
 			<th style="text-align: center; vertical-align: middle;">איש קשר</th>
@@ -204,5 +204,8 @@
 	}
 	</script>
 	
+	<br>
+	<div class="footer">
+	</div>
 </body>
 </html>

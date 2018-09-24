@@ -130,7 +130,7 @@
 <body>
 
 	<div class="jumbotron text-center" style="margin-bottom:0;height:100px;">
-	<h2 style="margin-top:-15px">Website Header</h2>
+	<h2 style="margin-top:-15px">פתיחת תקלה</h2>
 	</div>
 
 	<div id="mySidenav" class="sidenav">
@@ -141,9 +141,9 @@
 		<a id="sidenavea" href="#"><h2>תפריט</h2></a>
 		<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
 		<a id="sidenavea" href="Tomech.php">פתיחת תקלה</a>
-		<a id="sidenavea" href="#">הגדרות</a>
+		<a id="sidenavea" href="#">תקלות נפוצות</a>
 		<a id="sidenavea" href="#">טלפונים</a>
-		<a id="sidenavea" href="#">knowledge Base</a>
+		<a id="sidenavea" href="#">הגדרות</a>
 		<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	
@@ -162,7 +162,7 @@
 					<input id="callerFullName" type="text" name="callerFullName">
 					<br>
 					שם חברה:<br>
-					<input id="companyNameList" list="companies" name="companyNameList">
+					<select id="companyNameList" list="companies" name="companyNameList">
 					<datalist id="companies">
 						<?php 
 							DEFINE ('DB_USER', 'matanso');
@@ -188,6 +188,7 @@
 						
 						?>
 					</datalist>
+					</select>
 					<br>
 					סניף:<br>
 					<input id="companyBranchList" type="text" name="companyBranchList" disabled>
@@ -258,8 +259,8 @@
 		</div>
 	</div>
 					
-	<div class="jumbotron text-center" style="margin-bottom:0">
-	<p>Footer</p>
+	<br>
+	<div class="footer">
 	</div>
 
 	<script type="text/javascript">
