@@ -121,7 +121,7 @@
 <body>
 
 	<div class="jumbotron text-center" style="margin-bottom:0;height:100px;">
-	<h2 style="margin-top:-15px">פתיחת תקלה</h2>
+	<h2 style="margin-top:-15px"></h2>
 	</div>
 
 	<div id="mySidenav" class="sidenav">
@@ -129,9 +129,9 @@
 	<a id="sidenavea" href="#"><h2>תפריט</h2></a>
 		<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
 		<a id="sidenavea" href="Tomech.php">פתיחת תקלה</a>
-		<a id="sidenavea" href="#">הגדרות</a>
+		<a id="sidenavea" href="#">תקלות נפוצות</a>
 		<a id="sidenavea" href="#">טלפונים</a>
-		<a id="sidenavea" href="#">knowledge Base</a>
+		<a id="sidenavea" href="#">הגדרות</a>
 		<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	
@@ -169,15 +169,17 @@
 	<div id="finish" class="container" style="margin-left:150px;">
 		<div class="row">
 			<div class="col-sm-12">
-				<h2>!התקלה נפתחה במערכת</h2><br>
+				<?php 
+				echo "<h2>תקלה מספר ".$_POST['hiddenField2']." נפתחה במערכת!</h2><br>";
+				?>
 				<a type="button" href="Tomech.php">לפתיחת תקלה חדשה לחץ כאן</a>
 			</div>
 		</div>
 	</div>
 
 					
-	<div class="jumbotron text-center" style="margin-bottom:0">
-	<p>Footer</p>
+	<br>
+	<div class="footer">
 	</div>
 	
 	<script type="text/javascript">

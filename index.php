@@ -1,7 +1,7 @@
 <!DOCOTYPE html>
 <html>
 <head>
-<title> Support View </title>
+<title> HomePage </title>
 <link rel="stylesheet" href="index.css">
 
 </head>
@@ -37,7 +37,7 @@
 
 <img id="logo" src="images\background\extralblur.jpg" alt="blurbackground" style="width: 100%; height: 30%">
 
-<form id='queryForm' name='queryForm' method='post' action='getIssue.php' style="visibility:hidden;">
+<form id='queryForm' name='queryForm' method='post' action='getIssueClosed.php' style="visibility:hidden;">
 	<input type='hidden' name='queryId' id='queryId' value='1'>
 </form>
 
@@ -86,8 +86,7 @@
      	<a style="visibility: hidden; width: 0; height: 0;" id='tomechopen' href='Tomech.php'>פתיחת תקלה</a>
 		<a style="visibility: hidden; width: 0; height: 0;" id='techopen1' href='Tech.php'>תקלות פתוחות</a>
 		<a style="visibility: hidden; width: 0; height: 0;" id='techopen2' href='TechClosed.php'>תקלות סגורות</a>
-	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen3' href='Tech.php'>מלאי רכב</a>
-		<a style="visibility: hidden; width: 0; height: 0;" id='manageropen' href='Tomech.php'>מלאי מחסנים</a>
+	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen3' href='warehouse.php'>מלאי</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea3' href='#'>תקלות נפוצות</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea4' href='#'>טלפונים</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea5' href='#'>הגדרות</a>
@@ -134,7 +133,8 @@
 				document.getElementById("tomechopen").style.width = "";
 				document.getElementById("tomechopen").style.height = "";
 				document.getElementById("tomechopen").style.visibility = 'visible';
-				document.getElementById("mySidenav").style.width = "300px";
+				document.getElementById("mySidenav").style.paddingLeft = "0";
+				document.getElementById("mySidenav").style.width = "0";
 				document.getElementById("mySidenav").style.height = "100%";
 				document.getElementById("cons1").style.visibility = 'visible';
 				document.getElementById("cons").style.visibility = 'hidden';
@@ -172,7 +172,8 @@
 				document.getElementById("techopen3").style.width = "";
 				document.getElementById("techopen3").style.height = "";
 				document.getElementById("techopen3").style.visibility = 'visible';
-			    document.getElementById("mySidenav").style.width = "300px";
+			    document.getElementById("mySidenav").style.paddingLeft = "0";
+				document.getElementById("mySidenav").style.width = "0";
 				document.getElementById("mySidenav").style.height = "100%";
 				document.getElementById("cons1").style.visibility = 'visible';
 				document.getElementById("cons").style.visibility = 'hidden';
@@ -201,10 +202,11 @@
 				document.getElementById("sidenavea6").style.width = "";
 				document.getElementById("sidenavea6").style.height = "";
 				document.getElementById("sidenavea6").style.visibility = 'visible';
-				document.getElementById("manageropen").style.width = "";
-				document.getElementById("manageropen").style.height = "";
-				document.getElementById("manageropen").style.visibility = 'visible';
-			    document.getElementById("mySidenav").style.width = "300px";
+				document.getElementById("techopen3").style.width = "";
+				document.getElementById("techopen3").style.height = "";
+				document.getElementById("techopen3").style.visibility = 'visible';
+			    document.getElementById("mySidenav").style.paddingLeft = "0";
+				document.getElementById("mySidenav").style.width = "0";
 				document.getElementById("mySidenav").style.height = "100%";
 				document.getElementById("cons1").style.visibility = 'visible';
 				document.getElementById("cons").style.visibility = 'hidden';
@@ -267,7 +269,8 @@
 						document.getElementById("tomechopen").style.width = "";
 						document.getElementById("tomechopen").style.height = "";
 						document.getElementById("tomechopen").style.visibility = 'visible';
-						document.getElementById("mySidenav").style.width = "300px";
+						document.getElementById("mySidenav").style.paddingLeft = "0";
+						document.getElementById("mySidenav").style.width = "0";
 						document.getElementById("mySidenav").style.height = "100%";
 						document.sampleForm.authority.value = 1;
 						document.getElementById("cons1").style.visibility = 'visible';
@@ -306,7 +309,8 @@
 						document.getElementById("techopen3").style.width = "";
 						document.getElementById("techopen3").style.height = "";
 						document.getElementById("techopen3").style.visibility = 'visible';
-						document.getElementById("mySidenav").style.width = "300px";
+						document.getElementById("mySidenav").style.paddingLeft = "0";
+						document.getElementById("mySidenav").style.width = "0";
 						document.getElementById("mySidenav").style.height = "100%";
 						document.sampleForm.authority.value = 2;
 						document.getElementById("cons1").style.visibility = 'visible';
@@ -336,10 +340,11 @@
 						document.getElementById("sidenavea6").style.width = "";
 						document.getElementById("sidenavea6").style.height = "";
 						document.getElementById("sidenavea6").style.visibility = 'visible';
-						document.getElementById("manageropen").style.width = "";
-						document.getElementById("manageropen").style.height = "";
-						document.getElementById("manageropen").style.visibility = 'visible';
-						document.getElementById("mySidenav").style.width = "300px";
+						document.getElementById("techopen3").style.width = "";
+						document.getElementById("techopen3").style.height = "";
+						document.getElementById("techopen3").style.visibility = 'visible';
+						document.getElementById("mySidenav").style.paddingLeft = "0";
+						document.getElementById("mySidenav").style.width = "0";
 						document.getElementById("mySidenav").style.height = "100%";
 						document.sampleForm.authority.value = 3;
 						document.getElementById("cons1").style.visibility = 'visible';
@@ -407,8 +412,9 @@
 				$query = "SELECT * FROM submits order by queryId desc";
 		
 				$result = mysqli_query($conn, $query);
+				$num = 1;
 				
-				while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+				while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) && ($num < 6)) {
 					echo "<div class='call'>";
 					echo " <p><label><input id='thQueryId".$row{'queryId'}."' type='checkbox' class='radio' value='".$row{'queryId'}."' name='mobil[1][]' class='radi' style='display: none;'/><font size='5' color='blue' style='cursor: pointer;'>".$row{'queryId'}."</font></label><br>";
 					if($row{'opened'} == "1") {
@@ -422,6 +428,7 @@
 					echo "שם חברה: " . $row{'companyName'} . " <br>";
 					echo "</p>";
 					echo "</div>";
+					$num++;
 				}
 			
 				mysqli_close($conn);
@@ -446,15 +453,20 @@
 				
 				if((authority == 1) || (authority == 2) || (authority == 3))
 				{
-					// the name of the box is retrieved using the .attr() method
-					// as it is assumed and expected to be immutable
-					var group = "input:checkbox[name='" + $box.attr("name") + "']";
-					// the checked state of the group/box on the other hand will change
-					// and the current value is retrieved using .prop() method
-					$(group).prop("checked", false);
-					$box.prop("checked", true);
-					document.queryForm.queryId.value = $box.prop("value");
-					document.forms["queryForm"].submit();
+					if((authority == 2) || (authority == 3)){
+						// the name of the box is retrieved using the .attr() method
+						// as it is assumed and expected to be immutable
+						var group = "input:checkbox[name='" + $box.attr("name") + "']";
+						// the checked state of the group/box on the other hand will change
+						// and the current value is retrieved using .prop() method
+						$(group).prop("checked", false);
+						$box.prop("checked", true);
+						document.queryForm.queryId.value = $box.prop("value");
+						document.forms["queryForm"].submit();
+					}
+					else{
+						alert("only technicians or administrators can view opened issues!");
+					}
 				}
 				else{
 					alert("You Must Login First!");

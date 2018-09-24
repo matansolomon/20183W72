@@ -5,6 +5,7 @@ body {
 }
 
 .sidenav {
+	margin-right: 10px;
     height: 10%;
     width: 25%;
     position: fixed;
