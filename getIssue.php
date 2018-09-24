@@ -48,28 +48,11 @@
 	//document.getElementById("simpleCart_quantity").value;
 	}
 	function openNav() {
-		document.getElementById("mySidenav").style.width = "100%";
-		document.getElementById("mySidenav").style.height = "100%";
+		document.getElementById("mySidenav").style.width = "300";
 	}
-	
-	function closeTechNav() {
-		document.getElementById("myTechSidenav").style.width = "0";
-		document.getElementById("myTechSidenav").style.height = "0";
-		document.getElementById("mySidenav").style.width = "250px";
-		document.getElementById("mySidenav").style.height = "100%";
-		document.getElementById("myTechSidenav").style.visibility = "hidden";
-		
-	}
-	
-	function openCalendar() {
-			document.getElementById("myTechSidenav").style.width = "80%";
-			document.getElementById("myTechSidenav").style.height = "100%";
-			document.getElementById("myTechSidenav").style.visibility = "visible";
-	   }
 	
 	function closeNav() {
 		document.getElementById("mySidenav").style.width = "0";
-		document.getElementById("mySidenav").style.height = "0";
 	}
 	</script>
 	
@@ -93,7 +76,7 @@
 	<h2 style="margin-top:-15px">תקלה מספר <?php echo $_POST['queryId']; ?></h2>
 	</div>
 
-	<div id="mySidenav" class="sidenav">
+	<div id="mySidenav" class="sidenav" style="width:0;">
 	<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;">
 		<input type='hidden' name='authority' id='authority' value='2'>
 	</form>
@@ -102,10 +85,10 @@
 	<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
 	<a id="sidenavea" href="Tech.php">תקלות פתוחות</a>
 	<a id="sidenavea" href="TechClosed.php">תקלות סגורות</a>
-	<a id="sidenavea" href="TechClosed.php">מלאי רכב</a>
-	<a id="sidenavea" href="#">הגדרות</a>
+		<a id="sidenavea" href="warehouse.php">מלאי</a>
+	<a id="sidenavea" href="#">תקלות נפוצות</a>
 	<a id="sidenavea" href="#">טלפונים</a>
-	<a id="sidenavea" href="#">knowledge Base</a>
+	<a id="sidenavea" href="#">הגדרות</a>
 	<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	
@@ -120,7 +103,7 @@
 	<div class="row">
 	<div class="col-sm-12">
 	
-	<table width="100%" border="1">
+	<table width="100%" border="1" style="background:#eeeeee;">
 		<tr>
 			<th style="text-align: center; vertical-align: middle;">מספר תקלה</th>
 			<th style="text-align: center; vertical-align: middle;">איש קשר</th>
@@ -156,7 +139,7 @@
 			echo "</table>";
 			echo "<br>";
 			echo "<h3>תיאור התקלה על ידי תומך</h3><br>";
-			echo "<textarea id='issueText' name='issueText' style='width:600px; height:300px; margin-right:50px;' disabled>". $row{'issueText'} ."</textarea><br>";
+			echo "<textarea id='issueText' name='issueText' style='width:600px; height:300px; margin-right:50px;opacity:0.5;' disabled>". $row{'issueText'} ."</textarea><br>";
 			echo "<h3>תיאור התקלה על ידי טכנאי</h3><br>";
 			echo "<textarea id='issueText2' name='issueText' style='width:600px; height:300px; margin-right:50px;'>". $row{'issueText2'} ."</textarea><br>";
 			
@@ -217,9 +200,12 @@
 				google.maps.event.addDomListener(window, 'load', initialize);
 			</script>";
 			
+			$adrs = str_replace(' ', '%20', $row1{'address'});
+			
 			echo "<br>";
 			echo "<label style='margin-left:50%; float: left;'><input id='thQueryId' type='checkbox' class='radio' name='mobil[1][]' class='radi' style='display: none;'/><font size='5' color='blue' style='cursor: pointer;text-align: center; vertical-align: middle; border: 1px solid black; border-radius: 5px; padding: 3px;'>סגירת תקלה</font></label><br>";
-			echo "<h3>כתובת הלקוח: ". $row1{'address'} ."</h3>";
+			echo "<br>";
+			echo "<h3>כתובת הלקוח: <a href='waze://?q=". $adrs ."&navigate=yes'>". $row1{'address'} ."</a></h3>";
 			
 			mysqli_close($conn);
 		
@@ -227,7 +213,7 @@
 
 	<!--The div element for the map -->
 	<script>initialize();</script>
-	<div id="map_canvas" ></div>
+	<div id="map_canvas" style="height:45%"></div>
 
 					
 	<script type="text/javascript">

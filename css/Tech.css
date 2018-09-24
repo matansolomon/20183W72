@@ -68,6 +68,15 @@ body {
 	margin-right: 10px;
 }
 
+.footer{
+	margin-bottom:0;
+	width:100%;
+	height:10%;
+	bottom:0;
+	position:fixed;
+	background-color: #eeeeee;
+}
+
 #ex {
     margin-right: -20px;
 }

@@ -1,7 +1,7 @@
 <!DOCOTYPE html>
 <html>
 <head>
-<title> Support View </title>
+<title> Tech View </title>
 <link rel="stylesheet" href="css/Tomech.css">
 
 </head>
@@ -33,85 +33,16 @@
   </style>
   
   <script type="text/javascript">
-	function script(){
-	document.getElementById("hiddenField2").value=new Date().toJSON().slice(0,19).replace(/-/g,'/');
-	document.getElementById("hiddenField2").value=document.getElementById("hiddenField2").value.replace(/:/g,'/');
-	document.getElementById("hiddenField2").value=document.getElementById("hiddenField2").value.replace(/T/g,'/');	
-	document.getElementById("hiddenField2").value=document.getElementById("hiddenField2").value.replace(/[/\\*]/g, "");	
-	document.getElementById("hiddenField1").value=document.getElementById("hiddenField2").value + Math.floor(Math.random());
-	
-	//document.getElementById("_total").value;
-	//document.getElementById("simpleCart_quantity").value;
-	}
 	function openNav() {
 		document.getElementById("mySidenav").style.width = "300px";
 		document.getElementById("mySidenav").style.height = "100%";
 	}
 	
-	function closeTechNav() {
-		document.getElementById("myTechSidenav").style.width = "0";
-		document.getElementById("myTechSidenav").style.height = "0";
-		document.getElementById("mySidenav").style.width = "300px";
-		document.getElementById("mySidenav").style.height = "100%";
-		document.getElementById("myTechSidenav").style.visibility = "hidden";
-		
-	}
-	
-	function openCalendar() {
-			document.getElementById("myTechSidenav").style.width = "80%";
-			document.getElementById("myTechSidenav").style.height = "100%";
-			document.getElementById("myTechSidenav").style.visibility = "visible";
-	   }
 	
 	function closeNav() {
 		document.getElementById("mySidenav").style.width = "0";
 	}
-	
-	$(function() {
-		$("input:checkbox").on('click', function() {
-		// in the handler, 'this' refers to the box clicked on
-		var $box = $(this);
-		var eventButton = document.getElementById('btnCreateEvents');
-		var deleteEventButton = document.getElementById('btnDeleteEvents');
-		var openCalendar = document.getElementById('btnOpenCalendar');
-		
-		if ($box.is(":checked")) {
-			// the name of the box is retrieved using the .attr() method
-			// as it is assumed and expected to be immutable
-			var group = "input:checkbox[name='" + $box.attr("name") + "']";
-			// the checked state of the group/box on the other hand will change
-			// and the current value is retrieved using .prop() method
-			$(group).prop("checked", false);
-			$box.prop("checked", true);
-			if ($box.prop("value") == "3") {
-				openCalendar.style.visibility = 'visible'; 		// if checked, hide button
-				openCalendar.style.width = '';
-				openCalendar.style.height = '';
-				document.getElementById("tech01").innerHTML = "תיאום טכנאי:";
-			} else {
-				document.getElementById("myTechSidenav").style.visibility = "hidden";
-				openCalendar.style.visibility = 'hidden'; 		// if checked, hide button
-				openCalendar.style.width = '0';
-				openCalendar.style.height = '0';
-				document.getElementById("tech01").innerHTML = "";
-			}
-		} else {
-			$box.prop("checked", false);
-			if ($box.prop("value") == "3") {
-				openCalendar.style.visibility = 'hidden'; 		// if checked, hide button
-				openCalendar.style.width = '0';
-				openCalendar.style.height = '0';
-				document.getElementById("myTechSidenav").style.visibility = "hidden";
-				document.getElementById("myTechSidenav").style.width = "0";
-				document.getElementById("myTechSidenav").style.height = "0";
-				document.getElementById("mySidenav").style.width = "250px";
-				document.getElementById("mySidenav").style.height = "100%";
-				document.getElementById("tech01").innerHTML = "";
-				
-			}
-		}
-		});
-	});
+
 	</script>
 
     <script src="js/jquery.js" type="text/javascript"></script>
@@ -130,10 +61,10 @@
 		<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
 		<a id="sidenavea" href="Tech.php">תקלות פתוחות</a>
 		<a id="sidenavea" href="TechClosed.php">תקלות סגורות</a>
-		<a id="sidenavea" href="TechClosed.php">מלאי רכב</a>
-		<a id="sidenavea" href="#">הגדרות</a>
+		<a id="sidenavea" href="warehouse.php">מלאי</a>
+		<a id="sidenavea" href="#">תקלות נפוצות</a>
 		<a id="sidenavea" href="#">טלפונים</a>
-		<a id="sidenavea" href="#">knowledge Base</a>
+		<a id="sidenavea" href="#">הגדרות</a>
 		<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;">
@@ -143,8 +74,6 @@
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
 		
 	<?php 
-		echo "<p>".$_POST['queryId']."</p>";
-		echo "<p>".$_POST['IssueText2']."</p>";
 		$queryId = $_POST['queryId'];
 		$IssueText2 = $_POST['IssueText2'];
 		
@@ -165,10 +94,14 @@
 	
 	?>
 	
-	<div id="finish" class="container" style="margin-left:150px;">
+	<div id="finish" class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<h2>!התקלה נסגרה</h2><br>
+				<?php 
+				echo "<h2>תקלה מספר ".$_POST['queryId']." נסגרה!</h2><br>";
+				echo "<h3>תוכן סגירת התקלה: ".$_POST['IssueText2'].".</h3><br>";
+				?>
+				
 				<a type="button" href="Tech.php">לחץ כאן כדי לעבור לתקלות הפתוחות</a><br>
 				<a type="button" href="TechClosed.php">או כאן כדי לעבור לתקלות הסגורות</a>
 			</div>
@@ -176,8 +109,9 @@
 	</div>
 
 					
-	<div class="jumbotron text-center" style="margin-bottom:0">
-	<p>Footer</p>
+		
+	<br>
+	<div class="footer">
 	</div>
 	
 	<script type="text/javascript">

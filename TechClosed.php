@@ -1,7 +1,7 @@
 <!DOCOTYPE html>
 <html>
 <head>
-<title> Support View </title>
+<title> Tech View </title>
 <link rel="stylesheet" href="css/Tech.css">
 
 </head>
@@ -101,7 +101,7 @@
 	<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
 	<a id="sidenavea" href="Tech.php">תקלות פתוחות</a>
 	<a id="sidenavea" href="TechClosed.php">תקלות סגורות</a>
-	<a id="sidenavea" href="TechClosed.php">מלאי</a>
+	<a id="sidenavea" href="warehouse.php">מלאי</a>
 	<a id="sidenavea" href="#">תקלות נפוצות</a>
 	<a id="sidenavea" href="#">טלפונים</a>
 	<a id="sidenavea" href="#">הגדרות</a>
@@ -117,7 +117,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-	<table width="100%" border="1" bgcolor="#eeeeee" >
+	<table width="100%" border="1" style="background:#eeeeee;">
 		<tr>
 			<th style="text-align: center; vertical-align: middle;">מספר תקלה</th>
 			<th style="text-align: center; vertical-align: middle;">איש קשר</th>
