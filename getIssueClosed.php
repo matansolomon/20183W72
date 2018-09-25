@@ -153,7 +153,7 @@
 			<th style="text-align: center; vertical-align: middle;">איש קשר</th>
 			<th style="text-align: center; vertical-align: middle;">טלפון</th>
 			<th style="text-align: center; vertical-align: middle;">חברה</th>
-			<th style="text-align: center; vertical-align: middle;">סניף</th>
+			<th style="text-align: center; vertical-align: middle;">מייל</th>
 		</tr>
 		<tr>
 		

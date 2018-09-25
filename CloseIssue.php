@@ -73,33 +73,47 @@
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
 		
-	<?php 
-		$queryId = $_POST['queryId'];
-		$IssueText2 = $_POST['IssueText2'];
-		
-		DEFINE ('DB_USER', 'matanso');
-		DEFINE ('DB_PASSWORD', 'pVUZVkA(l$Gf');
-		DEFINE ('DB_HOST', 'Localhost');
-		DEFINE ('DB_NAME', 'matanso_Sadna');
-		
-		$conn = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-		OR die('Could not connect to MySQL: ' .
-		mysqli_connect_error());
-		
-		$query = "UPDATE submits SET opened = '0', issueText2 = '".$IssueText2."' where queryId = '".$queryId."'";
-
-		$result = mysqli_query($conn, $query);
-	
-		mysqli_close($conn);
-	
-	?>
-	
 	<div id="finish" class="container">
 		<div class="row">
 			<div class="col-sm-12">
 				<?php 
+					$queryId = $_POST['queryId'];
+					$IssueText2 = $_POST['IssueText2'];
+					$email = $_POST['email'];
+					
+					DEFINE ('DB_USER', 'matanso');
+					DEFINE ('DB_PASSWORD', 'pVUZVkA(l$Gf');
+					DEFINE ('DB_HOST', 'Localhost');
+					DEFINE ('DB_NAME', 'matanso_Sadna');
+					
+					$conn = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+					OR die('Could not connect to MySQL: ' .
+					mysqli_connect_error());
+					
+					$query = "UPDATE submits SET opened = '0', issueText2 = '".$IssueText2."' where queryId = '".$queryId."'";
+			
+					$result = mysqli_query($conn, $query);
+				
+					$query2 = "select * from submits where queryId = '".$queryId."'";
+					
+					$result2 = mysqli_query($conn, $query2);
+					$row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+					
+					$to      = $email; 
+					
+					$subject = 'NO-REPLY: Your Ticket Was Closed';
+					$message = 'Ticket Number: '.$row{'queryId'}.".\nTicket Information: ". $row{'issueText'} .".\nTechnician Information: ". $row{'issueText2'} .".";
+					$headers = 'From: Noreply@Corby.com' . "\r\n" .
+						'Reply-To: Noreply@Corby.com' . "\r\n" .
+						'X-Mailer: PHP/' . phpversion();
+					
+					mail($to, $subject, $message, $headers);
+					
+					mysqli_close($conn);
+				
 				echo "<h2>תקלה מספר ".$_POST['queryId']." נסגרה!</h2><br>";
 				echo "<h3>תוכן סגירת התקלה: ".$_POST['IssueText2'].".</h3><br>";
+				echo "<h3>מייל סגירה נשלח עם הפרטים.</h3><br>";
 				?>
 				
 				<a type="button" href="Tech.php">לחץ כאן כדי לעבור לתקלות הפתוחות</a><br>
