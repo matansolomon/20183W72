@@ -97,6 +97,23 @@
 	<form id='queryForm' name='queryForm' method='post' action='CloseIssue.php' style="visibility:hidden;">
 		<?php echo "<input type='hidden' name='queryId' id='queryId' value='". $_POST['queryId'] ."'>"?>
 		<input type='hidden' name='IssueText2' id='IssueText2' value='1'>
+		<?php echo "<input type='hidden' name='email' id='email' value='";
+			DEFINE ('DB_USER', 'matanso');
+			DEFINE ('DB_PASSWORD', 'pVUZVkA(l$Gf');
+			DEFINE ('DB_HOST', 'Localhost');
+			DEFINE ('DB_NAME', 'matanso_Sadna');
+			
+			$conn = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+			OR die('Could not connect to MySQL: ' .
+			mysqli_connect_error());
+			
+			$query = "select * from submits where queryId = '".$_POST['queryId']."'";
+	
+			$result = mysqli_query($conn, $query);
+			
+			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			
+			echo $row{'companyBranch'}."'>";?>
 	</form>
 	
 	<div class="container">
@@ -109,7 +126,7 @@
 			<th style="text-align: center; vertical-align: middle;">איש קשר</th>
 			<th style="text-align: center; vertical-align: middle;">טלפון</th>
 			<th style="text-align: center; vertical-align: middle;">חברה</th>
-			<th style="text-align: center; vertical-align: middle;">סניף</th>
+			<th style="text-align: center; vertical-align: middle;">מייל</th>
 		</tr>
 		<tr>
 		
@@ -202,6 +219,7 @@
 			
 			$adrs = str_replace(' ', '%20', $row1{'address'});
 			
+			echo "<br>";
 			echo "<br>";
 			echo "<label style='margin-left:50%; float: left;'><input id='thQueryId' type='checkbox' class='radio' name='mobil[1][]' class='radi' style='display: none;'/><font size='5' color='blue' style='cursor: pointer;text-align: center; vertical-align: middle; border: 1px solid black; border-radius: 5px; padding: 3px;'>סגירת תקלה</font></label><br>";
 			echo "<br>";

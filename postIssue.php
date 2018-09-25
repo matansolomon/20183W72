@@ -162,6 +162,16 @@
 
 		$result = mysqli_query($conn, $query);
 	
+		$to      = $companyBranch; 
+					
+		$subject = 'NO-REPLY: Your Ticket Was Opened';
+		$message = 'Ticket Number: '.$queryId.".\nGeneral Information: \nCaller Name: ".$callerName.".\nCaller Number: ".$callerNumber.".\nCompany: ".$companyName.".\nTicket Information: \n". $issueText .".";
+		$headers = 'From: Noreply@Corby.com' . "\r\n" .
+			'Reply-To: Noreply@Corby.com' . "\r\n" .
+			'X-Mailer: PHP/' . phpversion();
+		
+		mail($to, $subject, $message, $headers);
+					
 		mysqli_close($conn);
 	
 	?>

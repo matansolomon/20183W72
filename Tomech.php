@@ -190,8 +190,8 @@
 					</datalist>
 					</select>
 					<br>
-					סניף:<br>
-					<input id="companyBranchList" type="text" name="companyBranchList" disabled>
+					מייל:<br>
+					<input id="companyBranchList" name="companyBranchList" type="email" placeholder="Enter your email">
 					<br>
 					טלפון:<br>
 					<input id="telNumber" type="text" name="telNumber">

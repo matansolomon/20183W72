@@ -147,12 +147,12 @@ if ($_POST["add_cat"] == "1") {
 			<div class="col-sm-12">
 				<h2>ניהול מחסנים:</h2>
 					<h3>פריטים קיימים:</h3>
-					<table border=1 width=40% style="background:#eeeeee;">
+					<table border=1 width=80% style="background:#eeeeee;">
 					<?php
 						$lastWarehouse = "";
 						$query = "SELECT warehouses.name AS warehouse_name, catalog.name AS catalog_name, catalog.description AS catalog_desc, count(catalog.name) AS count, catalog.catID, warehouse_items.warehouseID
 							FROM `warehouses` JOIN warehouse_items ON warehouses.warehouseID = warehouse_items.warehouseID JOIN catalog ON warehouse_items.catID = catalog.catID
-                            GROUP BY warehouses.warehouseID, catalog.catID ORDER BY warehouse_name";
+                            WHERE warehouses.warehouseID > '0' GROUP BY warehouses.warehouseID, catalog.catID ORDER BY warehouse_name";
 						$result = mysqli_query($conn, $query);
 						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 							if ($lastWarehouse != $row['warehouse_name']) {
@@ -170,45 +170,50 @@ if ($_POST["add_cat"] == "1") {
 						mysqli_free_result($result);
 					?>
 					</table>
-				<form method="post" style="margin-left: 10%;float: left;">
-					<input type="hidden" name="assign_cat" value="1"/>
-					<h3>שיבוץ חדש לפריט קיים במחסן:</h3>
-					בחר מחסן:<br>
-					<select name="warehouse_id"><?php echo $warehouses_options?></select>
 					<br>
-					בחר פריט:<br>
-					<select name="cat_id">
-					<?php
-						$query = "SELECT * FROM catalog";
-						$result = mysqli_query($conn, $query);
-						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-							echo "<option value='".$row['catID']."'>".$row['name']."</option>";
-						}
-						mysqli_free_result($result);
-					?>
-					</select><br>
-					כמות:<br>
-					<input type="text" name="cat_count" value='1' size=2>
-					<input id="submitForm" type="submit" value="הוסף">
-				</form>
-				
-				<form method="post" style="margin-left: 10%;float: left;">
-					<input type="hidden" name="add_warehouse" value="1"/>
-					<h3>הוספת מחסן חדש:</h3>
-					שם מחסן:<br>
-					<input type="text" name="warehouse_name">
-					<br><input id="submitForm" type="submit" value="הוסף">
-				</form>
-				
-				<form method="post" style="margin-left: 10%;float: left;">
-					<input type="hidden" name="add_cat" value="1"/>
-					<h3>הוספת פריט חדש:</h3>
-					שם:<br>
-					<input type="text" name="cat_name"><br>
-					תיאור:<br>
-					<input type="text" name="cat_desc"><br>
-					<br><input id="submitForm" type="submit" value="הוסף">
-				</form>
+				<div style="border: 0.3px solid;height:22%;width:80%;background:#eeeeee;">
+					<form method="post" style="margin-right: 2%;float: right;">
+						<input type="hidden" name="assign_cat" value="1"/>
+						<h3>שיבוץ חדש לפריט קיים במחסן:</h3>
+						בחר מחסן:<br>
+						<select name="warehouse_id"><?php echo $warehouses_options?></select>
+						<br>
+						בחר פריט:<br>
+						<select name="cat_id">
+						<?php
+							$query = "SELECT * FROM catalog";
+							$result = mysqli_query($conn, $query);
+							while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+								echo "<option value='".$row['catID']."'>".$row['name']."</option>";
+							}
+							mysqli_free_result($result);
+						?>
+						</select><br>
+						כמות:<br>
+						<input type="text" name="cat_count" value='1' size=2>
+						<input id="submitForm" type="submit" value="הוסף">
+					</form>
+					
+					<form method="post" style="margin-right: 10%;float: right;">
+						<input type="hidden" name="add_warehouse" value="1"/>
+						<h3>הוספת מחסן חדש:</h3>
+						שם מחסן:<br>
+						<input type="text" name="warehouse_name">
+						<br><input id="submitForm" type="submit" value="הוסף">
+					</form>
+					
+					<form method="post" style="margin-right: 10%;float: right;">
+						<input type="hidden" name="add_cat" value="1"/>
+						<h3>הוספת פריט חדש:</h3>
+						שם:<br>
+						<input type="text" name="cat_name"><br>
+						תיאור:<br>
+						<input type="text" name="cat_desc"><br>
+						<br><input id="submitForm" type="submit" value="הוסף">
+					</form>
+				</div>
+				<br>
+				<br>
 			</div>
 		</div>
 	</div>
