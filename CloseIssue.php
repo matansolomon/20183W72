@@ -109,6 +109,26 @@
 					
 					mail($to, $subject, $message, $headers);
 					
+					$partsUsed = array();
+					$query = "SELECT warehouses.name AS warehouse_name, catalog.catID, warehouse_items.warehouseID AS wID, warehouse_items.catID AS catID
+						FROM `warehouses` JOIN warehouse_items ON warehouses.warehouseID = warehouse_items.warehouseID JOIN catalog ON warehouse_items.catID = catalog.catID
+						GROUP BY warehouses.warehouseID, catalog.catID ORDER BY warehouse_name";
+					$result = mysqli_query($conn, $query);
+					while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+						$count = $_POST['counter_options_'.$row['wID']."_".$row['catID']];
+						if ($count > 0) {
+							$partsUsed[$row['wID']."_".$row['catID']] = $count;
+						}
+					}
+					mysqli_free_result($result);
+					
+					/* "use" needed items from selected warehouses */
+					foreach ($partsUsed as $item => $count) {
+						$item = explode("_", $item);
+						$query = "DELETE FROM warehouse_items WHERE warehouseID=".$item[0]." AND catID=".$item[1]." LIMIT ".$count;
+						$result = mysqli_query($conn, $query);
+					}
+					
 					mysqli_close($conn);
 				
 				echo "<h2>תקלה מספר ".$_POST['queryId']." נסגרה!</h2><br>";

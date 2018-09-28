@@ -94,10 +94,10 @@
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
 		
-	<form id='queryForm' name='queryForm' method='post' action='CloseIssue.php' style="visibility:hidden;">
+	<form id='queryForm' name='queryForm' method='post' action='CloseIssue.php'>
 		<?php echo "<input type='hidden' name='queryId' id='queryId' value='". $_POST['queryId'] ."'>"?>
 		<input type='hidden' name='IssueText2' id='IssueText2' value='1'>
-		<?php echo "<input type='hidden' name='email' id='email' value='";
+		<?php
 			DEFINE ('DB_USER', 'matanso');
 			DEFINE ('DB_PASSWORD', 'pVUZVkA(l$Gf');
 			DEFINE ('DB_HOST', 'Localhost');
@@ -113,8 +113,8 @@
 			
 			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 			
-			echo $row{'companyBranch'}."'>";?>
-	</form>
+			echo "<input type='hidden' name='email' id='email' value='".$row{'companyBranch'}."'>";
+		?>
 	
 	<div class="container">
 	<div class="row">
@@ -131,6 +131,17 @@
 		<tr>
 		
 		<?php 
+		
+	function getCounterOptions($itemId, $count) {
+		$res = "<select name='counter_options_".$itemId."'>";
+		for ($i=0; $i <= $count; $i++) {
+			$res .= "<option value='".$i."'>".$i."</option>";
+		}
+		$res .= "</select>";
+		
+		return $res;
+	}
+	
 			$queryId = $_POST['queryId'];
 			
 			DEFINE ('DB_USER', 'matanso');
@@ -147,6 +158,7 @@
 			$result = mysqli_query($conn, $query);
 			
 			$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+			$companyName = $row{'companyName'};
 			echo "<th style='text-align: center; vertical-align: middle;'><p>" . $row{'queryId'} . "</p></th>";
 			echo "<th style='text-align: center; vertical-align: middle;'><p>" . $row{'callerName'} . "</p></th>";
 			echo "<th style='text-align: center; vertical-align: middle;'><p>" . $row{'callerNumber'} . "</p></th>";
@@ -160,7 +172,26 @@
 			echo "<h3>תיאור התקלה על ידי טכנאי</h3><br>";
 			echo "<textarea id='issueText2' name='issueText' style='width:600px; height:300px; margin-right:50px;'>". $row{'issueText2'} ."</textarea><br>";
 			
-			$query1 = "select * from companies where Name = '". $row{'companyName'} ."'";
+			echo "<h3>שימוש במלאי:</h3><table border=1 width=40%>";
+			$query = "SELECT warehouses.name AS warehouse_name, catalog.name AS catalog_name, catalog.description AS catalog_desc, count(catalog.name) AS count, catalog.catID, warehouse_items.warehouseID AS wID, warehouse_items.catID AS catID
+				FROM `warehouses` JOIN warehouse_items ON warehouses.warehouseID = warehouse_items.warehouseID JOIN catalog ON warehouse_items.catID = catalog.catID
+				GROUP BY warehouses.warehouseID, catalog.catID ORDER BY warehouse_name";
+			$result = mysqli_query($conn, $query);
+			while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+				if ($lastWarehouse != $row['warehouse_name']) {
+					echo "<tr><td colspan=4><br>" . $row['warehouse_name'] . "</td></tr>";
+					echo "<tr><td>שם פריט</td><td>תיאור</td><td>כמות</td><td>כמות שימוש</td></tr>";
+					$lastWarehouse = $row['warehouse_name'];
+				}
+				
+				echo "<tr><td>".$row['catalog_name']."</td><td>".$row['catalog_desc']."</td><td>".$row['count']."</td>";
+				echo "<td>".getCounterOptions($row['wID']."_".$row['catID'], $row['count'])."</td></tr>";
+			}
+			mysqli_free_result($result);
+			
+			echo "</table></form>";
+			
+			$query1 = "select * from companies where Name = '". $companyName ."'";
 			$result1 = mysqli_query($conn, $query1);
 			$row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
 			
@@ -221,7 +252,8 @@
 			
 			echo "<br>";
 			echo "<br>";
-			echo "<label style='margin-left:50%; float: left;'><input id='thQueryId' type='checkbox' class='radio' name='mobil[1][]' class='radi' style='display: none;'/><font size='5' color='blue' style='cursor: pointer;text-align: center; vertical-align: middle; border: 1px solid black; border-radius: 5px; padding: 3px;'>סגירת תקלה</font></label><br>";
+			echo "<label style='margin-left:50%; float: left;'><input id='thQueryId' type='checkbox' class='radio' name='mobil[1][]' class='radi' style='display: none;'/>";
+			echo "<font size='5' color='blue' style='cursor: pointer;text-align: center; vertical-align: middle; border: 1px solid black; border-radius: 5px; padding: 3px;'>סגירת תקלה</font></label><br>";
 			echo "<br>";
 			echo "<h3>כתובת הלקוח: <a href='waze://?q=". $adrs ."&navigate=yes'>". $row1{'address'} ."</a></h3>";
 			
