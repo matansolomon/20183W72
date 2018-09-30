@@ -172,7 +172,7 @@
 			echo "<h3>תיאור התקלה על ידי טכנאי</h3><br>";
 			echo "<textarea id='issueText2' name='issueText' style='width:600px; height:300px; margin-right:50px;'>". $row{'issueText2'} ."</textarea><br>";
 			
-			echo "<h3>שימוש במלאי:</h3><table border=1 width=40%>";
+			echo "<h3>שימוש במלאי:</h3><table border=1 width=80% style='background:#eeeeee;'>";
 			$query = "SELECT warehouses.name AS warehouse_name, catalog.name AS catalog_name, catalog.description AS catalog_desc, count(catalog.name) AS count, catalog.catID, warehouse_items.warehouseID AS wID, warehouse_items.catID AS catID
 				FROM `warehouses` JOIN warehouse_items ON warehouses.warehouseID = warehouse_items.warehouseID JOIN catalog ON warehouse_items.catID = catalog.catID
 				GROUP BY warehouses.warehouseID, catalog.catID ORDER BY warehouse_name";
