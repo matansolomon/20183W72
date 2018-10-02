@@ -1,7 +1,7 @@
 <!DOCOTYPE html>
 <html>
 <head>
-<title> Tech View </title>
+<title> תקלה מספר <?php echo $_POST['queryId']; ?> </title>
 <link rel="stylesheet" href="css/Tomech.css">
 
 </head>
@@ -17,7 +17,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>טכנאי</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -76,25 +75,134 @@
 	<h2 style="margin-top:-15px">תקלה מספר <?php echo $_POST['queryId']; ?></h2>
 	</div>
 
-	<div id="mySidenav" class="sidenav" style="width:0;">
-	<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;">
-		<input type='hidden' name='authority' id='authority' value='2'>
-	</form>
-	<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<a id="sidenavea" href="#"><h2>תפריט</h2></a>
-	<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
-	<a id="sidenavea" href="Tech.php">תקלות פתוחות</a>
-	<a id="sidenavea" href="TechClosed.php">תקלות סגורות</a>
-		<a id="sidenavea" href="warehouse.php">מלאי</a>
-	<a id="sidenavea" href="#">תקלות נפוצות</a>
-	<a id="sidenavea" href="#">טלפונים</a>
-	<a id="sidenavea" href="#">הגדרות</a>
-	<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
+	<div id="mySidenav" class="sidenav" style="width: 0;">
+		<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;width: 0; height: 0;">
+			<input type='hidden' name='authority' id='authority' value='<?php echo $_POST['authority'];?>'>
+		</form>
+		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea1' href='#'><h2>תפריט</h2></a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='tomechopen' href='javascript:void(0)' onclick='gotoTomech()'>פתיחת תקלה</a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='techopen1' href='javascript:void(0)' onclick='gotoTech()'>תקלות פתוחות</a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='techopen2' href='javascript:void(0)' onclick='gotoTechClosed()'>תקלות סגורות</a>
+	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen3' href='javascript:void(0)' onclick='gotoWarehouse()'>מלאי</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea3' href='#'>תקלות נפוצות</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea4' href='#'>טלפונים</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea5' href='#'>הגדרות</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea6' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
+	<script type="text/javascript">
+		if(document.sampleForm.authority.value == 1)
+		{
+			document.getElementById("mySidenav").style.visibility = "visible";	
+			document.getElementById("sidenavea1").style.width = "";
+			document.getElementById("sidenavea1").style.height = "";
+			document.getElementById("sidenavea1").style.visibility = 'visible';
+			document.getElementById("sidenavea2").style.width = "";
+			document.getElementById("sidenavea2").style.height = "";
+			document.getElementById("sidenavea2").style.visibility = 'visible';
+			document.getElementById("sidenavea3").style.width = "";
+			document.getElementById("sidenavea3").style.height = "";
+			document.getElementById("sidenavea3").style.visibility = 'visible';
+			document.getElementById("sidenavea4").style.width = "";
+			document.getElementById("sidenavea4").style.height = "";
+			document.getElementById("sidenavea4").style.visibility = 'visible';
+			document.getElementById("sidenavea5").style.width = "";
+			document.getElementById("sidenavea5").style.height = "";
+			document.getElementById("sidenavea5").style.visibility = 'visible';
+			document.getElementById("sidenavea6").style.width = "";
+			document.getElementById("sidenavea6").style.height = "";
+			document.getElementById("sidenavea6").style.visibility = 'visible';
+			document.getElementById("tomechopen").style.width = "";
+			document.getElementById("tomechopen").style.height = "";
+			document.getElementById("tomechopen").style.visibility = 'visible';
+			document.getElementById("techopen1").style.width = "";
+			document.getElementById("techopen1").style.height = "";
+			document.getElementById("techopen1").style.visibility = 'visible';
+			document.getElementById("techopen2").style.width = "";
+			document.getElementById("techopen2").style.height = "";
+			document.getElementById("techopen2").style.visibility = 'visible';
+			document.getElementById("mySidenav").style.paddingLeft = "0";
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("mySidenav").style.height = "100%";
+		}
+		if(document.sampleForm.authority.value == 2)
+		{
+			document.getElementById("mySidenav").style.visibility = "visible";	
+			document.getElementById("sidenavea1").style.width = "";
+			document.getElementById("sidenavea1").style.height = "";
+			document.getElementById("sidenavea1").style.visibility = 'visible';
+			document.getElementById("sidenavea2").style.width = "";
+			document.getElementById("sidenavea2").style.height = "";
+			document.getElementById("sidenavea2").style.visibility = 'visible';
+			document.getElementById("sidenavea3").style.width = "";
+			document.getElementById("sidenavea3").style.height = "";
+			document.getElementById("sidenavea3").style.visibility = 'visible';
+			document.getElementById("sidenavea4").style.width = "";
+			document.getElementById("sidenavea4").style.height = "";
+			document.getElementById("sidenavea4").style.visibility = 'visible';
+			document.getElementById("sidenavea5").style.width = "";
+			document.getElementById("sidenavea5").style.height = "";
+			document.getElementById("sidenavea5").style.visibility = 'visible';
+			document.getElementById("sidenavea6").style.width = "";
+			document.getElementById("sidenavea6").style.height = "";
+			document.getElementById("sidenavea6").style.visibility = 'visible';
+			document.getElementById("tomechopen").style.width = "";
+			document.getElementById("tomechopen").style.height = "";
+			document.getElementById("tomechopen").style.visibility = 'visible';
+			document.getElementById("techopen1").style.width = "";
+			document.getElementById("techopen1").style.height = "";
+			document.getElementById("techopen1").style.visibility = 'visible';
+			document.getElementById("techopen2").style.width = "";
+			document.getElementById("techopen2").style.height = "";
+			document.getElementById("techopen2").style.visibility = 'visible';
+			document.getElementById("techopen3").style.width = "";
+			document.getElementById("techopen3").style.height = "";
+			document.getElementById("techopen3").style.visibility = 'visible';
+			document.getElementById("mySidenav").style.paddingLeft = "0";
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("mySidenav").style.height = "100%";
+		}
+		if(document.sampleForm.authority.value == 3)
+		{
+			document.getElementById("mySidenav").style.visibility = "visible";	
+			document.getElementById("sidenavea1").style.width = "";
+			document.getElementById("sidenavea1").style.height = "";
+			document.getElementById("sidenavea1").style.visibility = 'visible';
+			document.getElementById("sidenavea2").style.width = "";
+			document.getElementById("sidenavea2").style.height = "";
+			document.getElementById("sidenavea2").style.visibility = 'visible';
+			document.getElementById("sidenavea3").style.width = "";
+			document.getElementById("sidenavea3").style.height = "";
+			document.getElementById("sidenavea3").style.visibility = 'visible';
+			document.getElementById("sidenavea4").style.width = "";
+			document.getElementById("sidenavea4").style.height = "";
+			document.getElementById("sidenavea4").style.visibility = 'visible';
+			document.getElementById("sidenavea5").style.width = "";
+			document.getElementById("sidenavea5").style.height = "";
+			document.getElementById("sidenavea5").style.visibility = 'visible';
+			document.getElementById("sidenavea6").style.width = "";
+			document.getElementById("sidenavea6").style.height = "";
+			document.getElementById("sidenavea6").style.visibility = 'visible';
+			document.getElementById("techopen1").style.width = "";
+			document.getElementById("techopen1").style.height = "";
+			document.getElementById("techopen1").style.visibility = 'visible';
+			document.getElementById("techopen2").style.width = "";
+			document.getElementById("techopen2").style.height = "";
+			document.getElementById("techopen2").style.visibility = 'visible';
+			document.getElementById("techopen3").style.width = "";
+			document.getElementById("techopen3").style.height = "";
+			document.getElementById("techopen3").style.visibility = 'visible';
+			document.getElementById("mySidenav").style.paddingLeft = "0";
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("mySidenav").style.height = "100%";
+		}
+	</script>
 		
 	<form id='queryForm' name='queryForm' method='post' action='CloseIssue.php'>
+		<input type='hidden' name='authority' id='authority' value='<?php echo $_POST['authority'];?>'>
 		<?php echo "<input type='hidden' name='queryId' id='queryId' value='". $_POST['queryId'] ."'>"?>
 		<input type='hidden' name='IssueText2' id='IssueText2' value='1'>
 		<?php
@@ -162,14 +270,14 @@
 			echo "<th style='text-align: center; vertical-align: middle;'><p>" . $row{'queryId'} . "</p></th>";
 			echo "<th style='text-align: center; vertical-align: middle;'><p>" . $row{'callerName'} . "</p></th>";
 			echo "<th style='text-align: center; vertical-align: middle;'><p>" . $row{'callerNumber'} . "</p></th>";
-			echo "<th style='text-align: center; vertical-align: middle;'><p>" . $row{'companyName'} . "</p></th>";
+			echo "<th style='text-align: center; vertical-align: middle;'><a id='btnOpenCalendar' href='javascript:void(0)' class='closebtn' onclick='openSidenav()'>" . $row{'companyName'} . "</a></th>";
 			echo "<th style='text-align: center; vertical-align: middle;'><p>" . $row{'companyBranch'} . "</p></th>";
 			echo "</tr>";
 			echo "</table>";
 			echo "<br>";
-			echo "<h3>תיאור התקלה על ידי תומך</h3><br>";
+			echo "<h3>תיאור פתיחת התקלה</h3><br>";
 			echo "<textarea id='issueText' name='issueText' style='width:600px; height:300px; margin-right:50px;opacity:0.5;' disabled>". $row{'issueText'} ."</textarea><br>";
-			echo "<h3>תיאור התקלה על ידי טכנאי</h3><br>";
+			echo "<h3>תיאור סגירת התקלה</h3><br>";
 			echo "<textarea id='issueText2' name='issueText' style='width:600px; height:300px; margin-right:50px;'>". $row{'issueText2'} ."</textarea><br>";
 			
 			echo "<h3>שימוש במלאי:</h3><table border=1 width=80% style='background:#eeeeee;'>";
@@ -255,18 +363,38 @@
 			echo "<label style='margin-left:50%; float: left;'><input id='thQueryId' type='checkbox' class='radio' name='mobil[1][]' class='radi' style='display: none;'/>";
 			echo "<font size='5' color='blue' style='cursor: pointer;text-align: center; vertical-align: middle; border: 1px solid black; border-radius: 5px; padding: 3px;'>סגירת תקלה</font></label><br>";
 			echo "<br>";
-			echo "<h3>כתובת הלקוח: <a href='waze://?q=". $adrs ."&navigate=yes'>". $row1{'address'} ."</a></h3>";
+			echo "<div id='myTechSidenav' style='visibility: hidden; width: 0; height: 0;' class='container sidenav'>";
+				echo "<a href='javascript:void(0)' class='closebtn' onclick='closeTechNav()'>&times;</a>";
+				echo "<div class='row'>";
+					echo "<h3><a href='waze://?q=". $adrs ."&navigate=yes'>". $row1{'address'} ."</a></h3>";
 			
 			mysqli_close($conn);
 		
 		?>
 
-	<!--The div element for the map -->
-	<script>initialize();</script>
-	<div id="map_canvas" style="height:45%"></div>
-
+					<!--The div element for the map -->
+					<script>initialize();</script>
+					<div id="map_canvas" style="height:45%"></div>
+				</div>
+			</div>
+			
+			<br>
+			<br>
+			<br>
 					
 	<script type="text/javascript">
+	function closeTechNav() {
+		document.getElementById("myTechSidenav").style.width = "0";
+		document.getElementById("mySidenav").style.width = "0";
+		document.getElementById("myTechSidenav").style.visibility = "hidden";	
+	}
+	
+	function openSidenav() {
+		document.getElementById("myTechSidenav").style.width = "80%";
+		document.getElementById("myTechSidenav").style.height = "100%";
+		document.getElementById("myTechSidenav").style.visibility = "visible";
+    }
+	
 	$(function() {
 		$("input:checkbox").on('click', function() {
 			// in the handler, 'this' refers to the box clicked on
@@ -290,7 +418,28 @@
 		document.sampleForm.authority.value = 0;
 		document.forms["sampleForm"].submit();
 	}
+	
 	function gotoIndex() {
+		document.forms["sampleForm"].submit();
+	}
+	
+	function gotoTomech() {
+		document.forms["sampleForm"].action = "Tomech.php";
+		document.forms["sampleForm"].submit();
+	}
+	
+	function gotoTech() {
+		document.forms["sampleForm"].action = "Tech.php";
+		document.forms["sampleForm"].submit();
+	}
+	
+	function gotoTechClosed() {
+		document.forms["sampleForm"].action = "TechClosed.php";
+		document.forms["sampleForm"].submit();
+	}
+	
+	function gotoWarehouse() {
+		document.forms["sampleForm"].action = "Warehouse.php";
 		document.forms["sampleForm"].submit();
 	}
 	</script>
