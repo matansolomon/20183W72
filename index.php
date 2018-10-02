@@ -1,7 +1,7 @@
 <!DOCOTYPE html>
 <html>
 <head>
-<title> HomePage </title>
+<title> Home </title>
 <link rel="stylesheet" href="index.css">
 
 </head>
@@ -37,15 +37,12 @@
 
 <img id="logo" src="images\background\extralblur.jpg" alt="blurbackground" style="width: 100%; height: 30%">
 
-<form id='queryForm' name='queryForm' method='post' action='getIssueClosed.php' style="visibility:hidden;">
-	<input type='hidden' name='queryId' id='queryId' value='1'>
-</form>
-
 <div id="mySidenav" class="sidenav" style="width: 0;direction: ltr;">
 	<div class="col-sm-12">
 		<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeconNav()">&times;</a>
 		<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;width: 0; height: 0;">
-			<input type='hidden' name='authority' id='authority' value='0'>
+			<input type='hidden' name='authority' id='authority' value='<?php echo $_POST['authority'];?>'>
+			<input type='hidden' name='queryId' id='queryId' value='1'>
 		<datalist id="usernames">
 			<?php 
 				DEFINE ('DB_USER', 'matanso');
@@ -72,7 +69,6 @@
 			
 			?>
 		</datalist>
-		<a href='#' onclick='setValue();'></a>
 		</form>
 		<form id="fo1">
 			<h4>User Name:</h4>
@@ -83,29 +79,20 @@
 		</form>
 		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea1' href='#'><h2>תפריט</h2></a>
 		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
-     	<a style="visibility: hidden; width: 0; height: 0;" id='tomechopen' href='Tomech.php'>פתיחת תקלה</a>
-		<a style="visibility: hidden; width: 0; height: 0;" id='techopen1' href='Tech.php'>תקלות פתוחות</a>
-		<a style="visibility: hidden; width: 0; height: 0;" id='techopen2' href='TechClosed.php'>תקלות סגורות</a>
-	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen3' href='warehouse.php'>מלאי</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='tomechopen' href='javascript:void(0)' onclick='gotoTomech()'>פתיחת תקלה</a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='techopen1' href='javascript:void(0)' onclick='gotoTech()'>תקלות פתוחות</a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='techopen2' href='javascript:void(0)' onclick='gotoTechClosed()'>תקלות סגורות</a>
+	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen3' href='javascript:void(0)' onclick='gotoWarehouse()'>מלאי</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea3' href='#'>תקלות נפוצות</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea4' href='#'>טלפונים</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea5' href='#'>הגדרות</a>
      	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea6' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
-		
 	</div>
-		<!--<a id="sidenavea" href="#"><h2>תפריט</h2></a>
-		<a id="ex" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a id="sidenavea" href="index.html">דף הבית</a>
-		<a id="sidenavea" href="Tomech.php">איזור אישי</a>
-		<a id="sidenavea" href="#">תקלות נפוצות</a>
-		<a id="sidenavea" href="#">טלפונים</a>
-		<a id="sidenavea" href="#">הגדרות</a>-->
-		</div>
+</div>
 		
 		<span id="cons1" onclick="openNav()" style="visibility: hidden;">תפריט&#9776;</span>
 		<span id="cons" onclick="connect()">התחבר&#9777;</span>
 		<script type="text/javascript">
-			document.sampleForm.authority.value = '<?php echo $_POST['authority']?>';
 			if(document.sampleForm.authority.value == 1)
 			{
 				document.getElementById("mySidenav").style.visibility = "visible";	
@@ -133,6 +120,12 @@
 				document.getElementById("tomechopen").style.width = "";
 				document.getElementById("tomechopen").style.height = "";
 				document.getElementById("tomechopen").style.visibility = 'visible';
+				document.getElementById("techopen1").style.width = "";
+				document.getElementById("techopen1").style.height = "";
+				document.getElementById("techopen1").style.visibility = 'visible';
+				document.getElementById("techopen2").style.width = "";
+				document.getElementById("techopen2").style.height = "";
+				document.getElementById("techopen2").style.visibility = 'visible';
 				document.getElementById("mySidenav").style.paddingLeft = "0";
 				document.getElementById("mySidenav").style.width = "0";
 				document.getElementById("mySidenav").style.height = "100%";
@@ -163,6 +156,9 @@
 				document.getElementById("sidenavea6").style.width = "";
 				document.getElementById("sidenavea6").style.height = "";
 				document.getElementById("sidenavea6").style.visibility = 'visible';
+				document.getElementById("tomechopen").style.width = "";
+				document.getElementById("tomechopen").style.height = "";
+				document.getElementById("tomechopen").style.visibility = 'visible';
 				document.getElementById("techopen1").style.width = "";
 				document.getElementById("techopen1").style.height = "";
 				document.getElementById("techopen1").style.visibility = 'visible';
@@ -202,6 +198,12 @@
 				document.getElementById("sidenavea6").style.width = "";
 				document.getElementById("sidenavea6").style.height = "";
 				document.getElementById("sidenavea6").style.visibility = 'visible';
+				document.getElementById("techopen1").style.width = "";
+				document.getElementById("techopen1").style.height = "";
+				document.getElementById("techopen1").style.visibility = 'visible';
+				document.getElementById("techopen2").style.width = "";
+				document.getElementById("techopen2").style.height = "";
+				document.getElementById("techopen2").style.visibility = 'visible';
 				document.getElementById("techopen3").style.width = "";
 				document.getElementById("techopen3").style.height = "";
 				document.getElementById("techopen3").style.visibility = 'visible';
@@ -223,6 +225,26 @@
 	}
 	
 	function gotoIndex() {
+		document.forms["sampleForm"].submit();
+	}
+	
+	function gotoTomech() {
+		document.forms["sampleForm"].action = "Tomech.php";
+		document.forms["sampleForm"].submit();
+	}
+	
+	function gotoTech() {
+		document.forms["sampleForm"].action = "Tech.php";
+		document.forms["sampleForm"].submit();
+	}
+	
+	function gotoTechClosed() {
+		document.forms["sampleForm"].action = "TechClosed.php";
+		document.forms["sampleForm"].submit();
+	}
+	
+	function gotoWarehouse() {
+		document.forms["sampleForm"].action = "Warehouse.php";
 		document.forms["sampleForm"].submit();
 	}
 			
@@ -269,6 +291,12 @@
 						document.getElementById("tomechopen").style.width = "";
 						document.getElementById("tomechopen").style.height = "";
 						document.getElementById("tomechopen").style.visibility = 'visible';
+						document.getElementById("techopen1").style.width = "";
+						document.getElementById("techopen1").style.height = "";
+						document.getElementById("techopen1").style.visibility = 'visible';
+						document.getElementById("techopen2").style.width = "";
+						document.getElementById("techopen2").style.height = "";
+						document.getElementById("techopen2").style.visibility = 'visible';
 						document.getElementById("mySidenav").style.paddingLeft = "0";
 						document.getElementById("mySidenav").style.width = "0";
 						document.getElementById("mySidenav").style.height = "100%";
@@ -300,6 +328,9 @@
 						document.getElementById("sidenavea6").style.width = "";
 						document.getElementById("sidenavea6").style.height = "";
 						document.getElementById("sidenavea6").style.visibility = 'visible';
+						document.getElementById("tomechopen").style.width = "";
+						document.getElementById("tomechopen").style.height = "";
+						document.getElementById("tomechopen").style.visibility = 'visible';
 						document.getElementById("techopen1").style.width = "";
 						document.getElementById("techopen1").style.height = "";
 						document.getElementById("techopen1").style.visibility = 'visible';
@@ -340,6 +371,12 @@
 						document.getElementById("sidenavea6").style.width = "";
 						document.getElementById("sidenavea6").style.height = "";
 						document.getElementById("sidenavea6").style.visibility = 'visible';
+						document.getElementById("techopen1").style.width = "";
+						document.getElementById("techopen1").style.height = "";
+						document.getElementById("techopen1").style.visibility = 'visible';
+						document.getElementById("techopen2").style.width = "";
+						document.getElementById("techopen2").style.height = "";
+						document.getElementById("techopen2").style.visibility = 'visible';
 						document.getElementById("techopen3").style.width = "";
 						document.getElementById("techopen3").style.height = "";
 						document.getElementById("techopen3").style.visibility = 'visible';
@@ -390,7 +427,7 @@
 	<br>
 	
 <div id="lastCallD">
-	<h1>תקלות אחרונות</h1>
+	<h1>תקלות פתוחות</h1>
 	<div id="lastCalls">
 		<?php 
 				$queryId = $_POST['hiddenField2'];
@@ -409,7 +446,7 @@
 				OR die('Could not connect to MySQL: ' .
 				mysqli_connect_error());
 				
-				$query = "SELECT * FROM submits order by queryId desc";
+				$query = "SELECT * FROM submits where opened = '1' order by queryId desc";
 		
 				$result = mysqli_query($conn, $query);
 				$num = 1;
@@ -417,12 +454,6 @@
 				while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) && ($num < 6)) {
 					echo "<div class='call'>";
 					echo " <p><label><input id='thQueryId".$row{'queryId'}."' type='checkbox' class='radio' value='".$row{'queryId'}."' name='mobil[1][]' class='radi' style='display: none;'/><font size='5' color='blue' style='cursor: pointer;'>".$row{'queryId'}."</font></label><br>";
-					if($row{'opened'} == "1") {
-						echo "סטאטוס תקלה: פתוח<br>";
-						}
-					else {	
-						echo "סטאטוס תקלה: סגור<br>";
-						}
 					echo " לקוח:" . $row{'callerName'} . " <br>";
 					echo "טלפון: " . $row{'callerNumber'} . " <br>";
 					echo "שם חברה: " . $row{'companyName'} . " <br>";
@@ -453,20 +484,16 @@
 				
 				if((authority == 1) || (authority == 2) || (authority == 3))
 				{
-					if((authority == 2) || (authority == 3)){
-						// the name of the box is retrieved using the .attr() method
-						// as it is assumed and expected to be immutable
-						var group = "input:checkbox[name='" + $box.attr("name") + "']";
-						// the checked state of the group/box on the other hand will change
-						// and the current value is retrieved using .prop() method
-						$(group).prop("checked", false);
-						$box.prop("checked", true);
-						document.queryForm.queryId.value = $box.prop("value");
-						document.forms["queryForm"].submit();
-					}
-					else{
-						alert("only technicians or administrators can view opened issues!");
-					}
+					document.forms["sampleForm"].action = "getIssue.php";
+					// the name of the box is retrieved using the .attr() method
+					// as it is assumed and expected to be immutable
+					var group = "input:checkbox[name='" + $box.attr("name") + "']";
+					// the checked state of the group/box on the other hand will change
+					// and the current value is retrieved using .prop() method
+					$(group).prop("checked", false);
+					$box.prop("checked", true);
+					document.sampleForm.queryId.value = $box.prop("value");
+					document.forms["sampleForm"].submit();
 				}
 				else{
 					alert("You Must Login First!");

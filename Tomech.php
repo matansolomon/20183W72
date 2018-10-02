@@ -1,7 +1,7 @@
 <!DOCOTYPE html>
 <html>
 <head>
-<title> Support View </title>
+<title> פתיחת תקלה </title>
 <link rel="stylesheet" href="css/Tomech.css">
 
 </head>
@@ -17,7 +17,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>MESSI</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -53,7 +52,7 @@
 	
 	function closeTechNav() {
 		document.getElementById("myTechSidenav").style.width = "0";
-		document.getElementById("mySidenav").style.width = "300px";
+		document.getElementById("mySidenav").style.width = "0";
 		document.getElementById("mySidenav").style.height = "100%";
 		document.getElementById("myTechSidenav").style.visibility = "hidden";	
 	}
@@ -64,10 +63,10 @@
 	}
 	
 	function openCalendar() {
-			document.getElementById("myTechSidenav").style.width = "80%";
-			document.getElementById("myTechSidenav").style.height = "100%";
-			document.getElementById("myTechSidenav").style.visibility = "visible";
-	   }
+		document.getElementById("myTechSidenav").style.width = "80%";
+		document.getElementById("myTechSidenav").style.height = "100%";
+		document.getElementById("myTechSidenav").style.visibility = "visible";
+    }
 	
 	function closeNav() {
 		document.getElementById("ifmCalendar").style.width = "0";
@@ -96,11 +95,16 @@
 				openCalendar.style.height = '';
 				document.getElementById("tech01").innerHTML = "תיאום טכנאי:";
 			} else {
+				if($box.prop("value") == "4"){
+					document.forms["form1"].submit();
+				}
+				else{
 				document.getElementById("myTechSidenav").style.visibility = "hidden";
 				openCalendar.style.visibility = 'hidden'; 		// if checked, hide button
 				openCalendar.style.width = '0';
 				openCalendar.style.height = '0';
 				document.getElementById("tech01").innerHTML = "";
+				}
 			}
 		} else {
 			$box.prop("checked", false);
@@ -133,36 +137,146 @@
 	<h2 style="margin-top:-15px">פתיחת תקלה</h2>
 	</div>
 
-	<div id="mySidenav" class="sidenav">
-		<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;">
-			<input type='hidden' name='authority' id='authority' value='1'>
-		</form>
+	<div id="mySidenav" class="sidenav" style="width: 0;">
 		<a id="ex" style="float:left;" href="javascript:void(0)" class="closebtn" onclick="closeconNav()">&times;</a>
-		<a id="sidenavea" href="#"><h2>תפריט</h2></a>
-		<a id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
-		<a id="sidenavea" href="Tomech.php">פתיחת תקלה</a>
-		<a id="sidenavea" href="#">תקלות נפוצות</a>
-		<a id="sidenavea" href="#">טלפונים</a>
-		<a id="sidenavea" href="#">הגדרות</a>
-		<a id='sidenavea' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
+		<form id='sampleForm' name='sampleForm' method='post' action='index.php' style="visibility:hidden;width: 0; height: 0;">
+			<input type='hidden' name='authority' id='authority' value='<?php echo $_POST['authority'];?>'>
+		</form>
+		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea1' href='#'><h2>תפריט</h2></a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea2' href='javascript:void(0)' onclick='gotoIndex()'>דף הבית</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='tomechopen' href='javascript:void(0)' onclick='gotoTomech()'>פתיחת תקלה</a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='techopen1' href='javascript:void(0)' onclick='gotoTech()'>תקלות פתוחות</a>
+		<a style="visibility: hidden; width: 0; height: 0;" id='techopen2' href='javascript:void(0)' onclick='gotoTechClosed()'>תקלות סגורות</a>
+	    <a style="visibility: hidden; width: 0; height: 0;" id='techopen3' href='javascript:void(0)' onclick='gotoWarehouse()'>מלאי</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea3' href='#'>תקלות נפוצות</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea4' href='#'>טלפונים</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea5' href='#'>הגדרות</a>
+     	<a style="visibility: hidden; width: 0; height: 0;" id='sidenavea6' href='javascript:void(0)' onclick='disconnect()'>התנתק</a>
 	</div>
 	
 	<span id="cons" onclick="openNav()">תפריט&#9776;</span>
+	<script type="text/javascript">
+		if(document.sampleForm.authority.value == 1)
+		{
+			document.getElementById("mySidenav").style.visibility = "visible";	
+			document.getElementById("sidenavea1").style.width = "";
+			document.getElementById("sidenavea1").style.height = "";
+			document.getElementById("sidenavea1").style.visibility = 'visible';
+			document.getElementById("sidenavea2").style.width = "";
+			document.getElementById("sidenavea2").style.height = "";
+			document.getElementById("sidenavea2").style.visibility = 'visible';
+			document.getElementById("sidenavea3").style.width = "";
+			document.getElementById("sidenavea3").style.height = "";
+			document.getElementById("sidenavea3").style.visibility = 'visible';
+			document.getElementById("sidenavea4").style.width = "";
+			document.getElementById("sidenavea4").style.height = "";
+			document.getElementById("sidenavea4").style.visibility = 'visible';
+			document.getElementById("sidenavea5").style.width = "";
+			document.getElementById("sidenavea5").style.height = "";
+			document.getElementById("sidenavea5").style.visibility = 'visible';
+			document.getElementById("sidenavea6").style.width = "";
+			document.getElementById("sidenavea6").style.height = "";
+			document.getElementById("sidenavea6").style.visibility = 'visible';
+			document.getElementById("tomechopen").style.width = "";
+			document.getElementById("tomechopen").style.height = "";
+			document.getElementById("tomechopen").style.visibility = 'visible';
+			document.getElementById("techopen1").style.width = "";
+			document.getElementById("techopen1").style.height = "";
+			document.getElementById("techopen1").style.visibility = 'visible';
+			document.getElementById("techopen2").style.width = "";
+			document.getElementById("techopen2").style.height = "";
+			document.getElementById("techopen2").style.visibility = 'visible';
+			document.getElementById("mySidenav").style.paddingLeft = "0";
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("mySidenav").style.height = "100%";
+		}
+		if(document.sampleForm.authority.value == 2)
+		{
+			document.getElementById("mySidenav").style.visibility = "visible";	
+			document.getElementById("sidenavea1").style.width = "";
+			document.getElementById("sidenavea1").style.height = "";
+			document.getElementById("sidenavea1").style.visibility = 'visible';
+			document.getElementById("sidenavea2").style.width = "";
+			document.getElementById("sidenavea2").style.height = "";
+			document.getElementById("sidenavea2").style.visibility = 'visible';
+			document.getElementById("sidenavea3").style.width = "";
+			document.getElementById("sidenavea3").style.height = "";
+			document.getElementById("sidenavea3").style.visibility = 'visible';
+			document.getElementById("sidenavea4").style.width = "";
+			document.getElementById("sidenavea4").style.height = "";
+			document.getElementById("sidenavea4").style.visibility = 'visible';
+			document.getElementById("sidenavea5").style.width = "";
+			document.getElementById("sidenavea5").style.height = "";
+			document.getElementById("sidenavea5").style.visibility = 'visible';
+			document.getElementById("sidenavea6").style.width = "";
+			document.getElementById("sidenavea6").style.height = "";
+			document.getElementById("sidenavea6").style.visibility = 'visible';
+			document.getElementById("tomechopen").style.width = "";
+			document.getElementById("tomechopen").style.height = "";
+			document.getElementById("tomechopen").style.visibility = 'visible';
+			document.getElementById("techopen1").style.width = "";
+			document.getElementById("techopen1").style.height = "";
+			document.getElementById("techopen1").style.visibility = 'visible';
+			document.getElementById("techopen2").style.width = "";
+			document.getElementById("techopen2").style.height = "";
+			document.getElementById("techopen2").style.visibility = 'visible';
+			document.getElementById("techopen3").style.width = "";
+			document.getElementById("techopen3").style.height = "";
+			document.getElementById("techopen3").style.visibility = 'visible';
+			document.getElementById("mySidenav").style.paddingLeft = "0";
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("mySidenav").style.height = "100%";
+		}
+		if(document.sampleForm.authority.value == 3)
+		{
+			document.getElementById("mySidenav").style.visibility = "visible";	
+			document.getElementById("sidenavea1").style.width = "";
+			document.getElementById("sidenavea1").style.height = "";
+			document.getElementById("sidenavea1").style.visibility = 'visible';
+			document.getElementById("sidenavea2").style.width = "";
+			document.getElementById("sidenavea2").style.height = "";
+			document.getElementById("sidenavea2").style.visibility = 'visible';
+			document.getElementById("sidenavea3").style.width = "";
+			document.getElementById("sidenavea3").style.height = "";
+			document.getElementById("sidenavea3").style.visibility = 'visible';
+			document.getElementById("sidenavea4").style.width = "";
+			document.getElementById("sidenavea4").style.height = "";
+			document.getElementById("sidenavea4").style.visibility = 'visible';
+			document.getElementById("sidenavea5").style.width = "";
+			document.getElementById("sidenavea5").style.height = "";
+			document.getElementById("sidenavea5").style.visibility = 'visible';
+			document.getElementById("sidenavea6").style.width = "";
+			document.getElementById("sidenavea6").style.height = "";
+			document.getElementById("sidenavea6").style.visibility = 'visible';
+			document.getElementById("techopen1").style.width = "";
+			document.getElementById("techopen1").style.height = "";
+			document.getElementById("techopen1").style.visibility = 'visible';
+			document.getElementById("techopen2").style.width = "";
+			document.getElementById("techopen2").style.height = "";
+			document.getElementById("techopen2").style.visibility = 'visible';
+			document.getElementById("techopen3").style.width = "";
+			document.getElementById("techopen3").style.height = "";
+			document.getElementById("techopen3").style.visibility = 'visible';
+			document.getElementById("mySidenav").style.paddingLeft = "0";
+			document.getElementById("mySidenav").style.width = "0";
+			document.getElementById("mySidenav").style.height = "100%";
+		}
+	</script>
 
 	<div id="issueForm" class="container">
 		<div class="row">
 			<div class="col-sm-12">
 				<h2>פתיחת תקלה:</h2>
 				<form action="postIssue.php" method="post" id="form1">
-					<input name="hiddenField1" id="hiddenField1" disabled/>
+					<input type="hidden" name="authority" id="authority" value="<?php echo $_POST['authority'];?>">
+					<input name="hiddenField1" style="margin-right:50px;" id="hiddenField1" disabled/>
 					<input type="hidden" name="hiddenField2" id="hiddenField2"/>
 					<script>script();</script>
-					<h3>פרטי מתקשר:</h3>
-					שם מלא:<br>
-					<input id="callerFullName" type="text" name="callerFullName">
+					<h3>שם מלא: </h3>
+					<input id="callerFullName" style="margin-right:50px;" type="text" name="callerFullName">
 					<br>
-					שם חברה:<br>
-					<select id="companyNameList" list="companies" name="companyNameList">
+					<h3>שם חברה: </h3>
+					<select id="companyNameList" style="margin-right:50px;width:175px;height:25px;" list="companies" name="companyNameList">
 					<datalist id="companies">
 						<?php 
 							DEFINE ('DB_USER', 'matanso');
@@ -190,36 +304,27 @@
 					</datalist>
 					</select>
 					<br>
-					מייל:<br>
-					<input id="companyBranchList" name="companyBranchList" type="email" placeholder="Enter your email">
+					<h3>מייל: </h3>
+					<input id="companyBranchList" style="margin-right:50px;" name="companyBranchList" type="email" placeholder="Enter your email">
 					<br>
-					טלפון:<br>
-					<input id="telNumber" type="text" name="telNumber">
+					<h3>טלפון: </h3>
+					<input id="telNumber" style="margin-right:50px;" type="text" name="telNumber">
 					<br>
-					תיעוד פרטי התקלה:<br>
-					<textarea id="issueText" name="issueText" style="width:600px; height:300px;"></textarea>
+					<h3>תיאור פתיחת התקלה:</h3><br>
+					<textarea id="issueText" style="width:600px; height:300px;margin-right:50px;" name="issueText"></textarea>
 					<br>
 					<div class="radio">
 						<h3>אופן טיפול:</h3>
-						<label><input id="optionsRadios1" type="checkbox" class="radio" value="1" name="mobil[1][]" class="radi"/>בדיקת חיבורים</label><br>
-						<label><input id="optionsRadios2" type="checkbox" class="radio" value="2" name="mobil[1][]" class="radi"/>נפילת רשת</label><br>
-						<label><input id="optionsRadios3" type="checkbox" class="radio" value="3" name="mobil[1][]" class="radi"/>נדרש טיפול נוסף בעזרת טכנאי שטח</label>
+						<label><input id="optionsRadios1" style="margin-right:50px;" type="checkbox" class="radio" value="1" name="mobil[1][]" class="radi"/>בדיקת חיבורים</label><br>
+						<label><input id="optionsRadios2" style="margin-right:50px;" type="checkbox" class="radio" value="2" name="mobil[1][]" class="radi"/>נפילת רשת</label><br>
+						<label><input id="optionsRadios3" style="margin-right:50px;" type="checkbox" class="radio" value="3" name="mobil[1][]" class="radi"/>נדרש טיפול נוסף בעזרת טכנאי שטח</label>
 						<a id="btnOpenCalendar" style="visibility: hidden; width: 0; height: 0;" href="javascript:void(0)" class="closebtn" onclick="openCalendar()">Open Calendar</a><br>
 						<div style="visibility: hidden; width: 0; height: 0;" id="event-response"></div>
 					</div>
 					<h3 id="tech01" style="visibility: hidden; width: 0; height: 0;" ></h3>
 					
-					<button id="submitForm" type="submit" form="form1" disabled>לפתיחת תקלה</button>
+					<label style="margin-left:50%; float: left;"><input id="thQueryId" type="checkbox" class="radio" value="4" name="mobil[1][]" style="display: none;"><font size="5" color="blue" style="cursor: pointer;text-align: center; vertical-align: middle; border: 1px solid black; border-radius: 5px; padding: 3px;">פתיחת תקלה</font></label>
 				</form>
-			</div>
-		</div>
-	</div>
-	
-	<div id="finish" class="container" style="visibility: hidden; width: 0; height: 0;margin-left:150px;">
-		<div class="row">
-			<div class="col-sm-12">
-				<h2>!התקלה נפתחה במערכת</h2><br>
-				<a type="button" href="Tomech.php">לפתיחת תקלה חדשה לחץ כאן</a>
 			</div>
 		</div>
 	</div>
@@ -260,8 +365,8 @@
 	</div>
 					
 	<br>
-	<div class="footer">
-	</div>
+	<br>
+
 
 	<script type="text/javascript">
         // date variables
@@ -297,7 +402,28 @@
 			document.sampleForm.authority.value = 0;
 			document.forms["sampleForm"].submit();
 		}
+		
 		function gotoIndex() {
+			document.forms["sampleForm"].submit();
+		}
+		
+		function gotoTomech() {
+		document.forms["sampleForm"].action = "Tomech.php";
+		document.forms["sampleForm"].submit();
+		}
+		
+		function gotoTech() {
+			document.forms["sampleForm"].action = "Tech.php";
+			document.forms["sampleForm"].submit();
+		}
+		
+		function gotoTechClosed() {
+			document.forms["sampleForm"].action = "TechClosed.php";
+			document.forms["sampleForm"].submit();
+		}
+		
+		function gotoWarehouse() {
+			document.forms["sampleForm"].action = "Warehouse.php";
 			document.forms["sampleForm"].submit();
 		}
 			
