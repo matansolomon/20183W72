@@ -44,7 +44,7 @@ if ($_POST["add_cat"] == "1") {
 
 <html>
 <head>
-<title> Manager\Tech View </title>
+<title> מלאי מחסנים </title>
 <link rel="stylesheet" href="css/Tomech.css">
 
 </head>
@@ -60,8 +60,8 @@ if ($_POST["add_cat"] == "1") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Manager\Tech View</title>
   <meta charset="utf-8">
+  <link rel="favicon" href="favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

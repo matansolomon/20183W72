@@ -19,6 +19,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="favicon" href="favicon.ico" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -94,16 +95,43 @@
 				openCalendar.style.width = '';
 				openCalendar.style.height = '';
 				document.getElementById("tech01").innerHTML = "תיאום טכנאי:";
+				document.getElementById('Kb').style.width = '0';
+				document.getElementById('Kb').value = '';
+				document.getElementById('Kb').style.visibility = 'hidden';
 			} else {
 				if($box.prop("value") == "4"){
 					document.forms["form1"].submit();
 				}
 				else{
-				document.getElementById("myTechSidenav").style.visibility = "hidden";
-				openCalendar.style.visibility = 'hidden'; 		// if checked, hide button
-				openCalendar.style.width = '0';
-				openCalendar.style.height = '0';
-				document.getElementById("tech01").innerHTML = "";
+					if($box.prop("value") == "1"){
+						document.getElementById('Kb').style.visibility = 'visible';
+						document.getElementById('Kb').style.width = '100%';
+						document.getElementById('Kb').value = 'יש לוודא חיבור כבל חשמל שחור מחובר מאחורי הסטרימר.\nאם כבל מחובר, יש לחפש את השנאי של הסטרימר, אמור להיות עליו מנורה ירוקה/אדומה.\nאם מנורה לא דולקת יש לוודא כבל חשמל קומקום מחובר באופן תקין לשנאי.\nבמידה ומחובר תקין להדק, ולוודא שמחובר לשקע.\nאם מחובר לשקע יש לנסות להחליף לשקע חשמל אחר.\nאם ממשיך - החלפת ספק בעזרת טכנאי.';
+					}
+					else{
+						if($box.prop("value") == "2"){
+							document.getElementById('Kb').style.visibility = 'visible';
+							document.getElementById('Kb').style.width = '100%';
+							document.getElementById('Kb').value = 'יש לבצע אתחול חשמלי לראוטר/נתב, וכן לסטרימר.\nלהמתין מספר דקות לעלייה. לאחר התחברות מחודשת לבדוק שוב כעבור שעה.\nאם ניתוקים ממשיכים - העברה לחברת האינטרנט לטיפול.\nבנתיים עד לתיקון ניתן לנתק כבל רשת של הסטרימר על מנת שלא יהיו קפיצות במוזיקה.';
+						}
+						else{
+							if($box.prop("value") == "5"){
+								document.getElementById('Kb').style.visibility = 'visible';
+								document.getElementById('Kb').style.width = '100%';
+								document.getElementById('Kb').value = 'יש לוודא כבל LAN מחובר לסטרימר, אם הוא מחובר אך נורות לא דולקות בכניסת LAN ככל הנראה מנותק מהצד השני.\nיש לחפש את הצד השני ולוודא שמחובר למודם/ראוטר.\nאם מחובר לשקע רשת, יש למצוא את השקע בצד השני (לרוב נמצא במחסן), ולוודא שממנו יש חיבור לראוטר/נתב.\nאם מחובר לראוטר/נתב יש לוודא שהם מחוברים לאינטרנט.\nאם מחובר ונורות דולקות בסטרימר יש לוודא נורת INTERNET דולקת בראוטר, אם לא - הפניה לחברת האינטרנט.\nאם כבל רשת מחובר בשתי הקצוות אך עדיין נורות לא נדלקות - יש להחליף כבל רשת.';
+							}
+							else{
+								document.getElementById('Kb').style.width = '0';
+								document.getElementById('Kb').value = '';
+								document.getElementById('Kb').style.visibility = 'hidden';
+								document.getElementById("myTechSidenav").style.visibility = "hidden";
+								openCalendar.style.visibility = 'hidden'; 		// if checked, hide button
+								openCalendar.style.width = '0';
+								openCalendar.style.height = '0';
+								document.getElementById("tech01").innerHTML = "";
+							}
+						}
+					}
 				}
 			}
 		} else {
@@ -112,13 +140,12 @@
 				openCalendar.style.visibility = 'hidden'; 		// if checked, hide button
 				openCalendar.style.width = '0';
 				openCalendar.style.height = '0';
-				document.getElementById("myTechSidenav").style.visibility = "hidden";
-				document.getElementById("myTechSidenav").style.width = "0";
-				document.getElementById("myTechSidenav").style.height = "0";
-				document.getElementById("mySidenav").style.width = "250px";
-				document.getElementById("mySidenav").style.height = "100%";
 				document.getElementById("tech01").innerHTML = "";
-				
+			}
+			else{
+				document.getElementById('Kb').style.width = '0';
+				document.getElementById('Kb').value = '';
+				document.getElementById('Kb').style.visibility = 'hidden';
 			}
 		}
 		});
@@ -313,16 +340,27 @@
 					<h3>תיאור פתיחת התקלה:</h3><br>
 					<textarea id="issueText" style="width:600px; height:300px;margin-right:50px;" name="issueText"></textarea>
 					<br>
-					<div class="radio">
-						<h3>אופן טיפול:</h3>
-						<label><input id="optionsRadios1" style="margin-right:50px;" type="checkbox" class="radio" value="1" name="mobil[1][]" class="radi"/>בדיקת חיבורים</label><br>
-						<label><input id="optionsRadios2" style="margin-right:50px;" type="checkbox" class="radio" value="2" name="mobil[1][]" class="radi"/>נפילת רשת</label><br>
-						<label><input id="optionsRadios3" style="margin-right:50px;" type="checkbox" class="radio" value="3" name="mobil[1][]" class="radi"/>נדרש טיפול נוסף בעזרת טכנאי שטח</label>
-						<a id="btnOpenCalendar" style="visibility: hidden; width: 0; height: 0;" href="javascript:void(0)" class="closebtn" onclick="openCalendar()">Open Calendar</a><br>
-						<div style="visibility: hidden; width: 0; height: 0;" id="event-response"></div>
+					<div class="radio" style="width:30%;float:right;">
+						<h3>בעיות נפוצות:</h3>
+						<label><input id="optionsRadios1" style="margin-right:50px;" type="checkbox" class="radio" value="1" name="mobil[1][]">סטרימר לא נדלק</label><br>
+						<label><input id="optionsRadios2" style="margin-right:50px;" type="checkbox" class="radio" value="2" name="mobil[1][]">ניתוקים במוזיקה</label><br>
+						<label><input id="optionsRadios5" style="margin-right:50px;" type="checkbox" class="radio" value="5" name="mobil[1][]">מוזיקה מתנגת אך לא מחוברת לרשת</label><br>
+						<label><input id="optionsRadios3" style="margin-right:50px;" type="checkbox" class="radio" value="3" name="mobil[1][]">נדרש טיפול נוסף בעזרת טכנאי שטח</label><br>
+						<a id="btnOpenCalendar" style="visibility: hidden; width: 0; height: 0;margin-right:170px;" href="javascript:void(0)" class="closebtn" onclick="openCalendar()">Open Calendar</a><br>
+						<div style="height: 100px;" id="event-response"></div>
+					</div>
+					<br>
+					<br>
+					<br>
+					<div style="width:27%;float:right;">
+						<textarea id="Kb" style="visibility:hidden;height: 100px;width:0;" name="Kb"></textarea>
 					</div>
 					<h3 id="tech01" style="visibility: hidden; width: 0; height: 0;" ></h3>
-					
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
 					<label style="margin-left:50%; float: left;"><input id="thQueryId" type="checkbox" class="radio" value="4" name="mobil[1][]" style="display: none;"><font size="5" color="blue" style="cursor: pointer;text-align: center; vertical-align: middle; border: 1px solid black; border-radius: 5px; padding: 3px;">פתיחת תקלה</font></label>
 				</form>
 			</div>
